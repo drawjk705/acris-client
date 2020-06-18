@@ -1,16 +1,37 @@
 import React from 'react';
-import { Formik } from 'formik';
-import Yup from 'yup';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 import { Dropdown } from '../../formHelpers/Dropdown';
+import { Borough } from '../../../__generated__/globalTypes';
+import { Input } from '../../formHelpers/Input';
+
+const MAX_LOT_NUM = 9999;
+const MAX_BLOCK_NUM = 99999;
 
 const validationSchema = Yup.object({
-    borough: Yup.number().oneOf([1, 2, 3, 4, 5]),
+    borough: Yup.string().oneOf(Object.values(Borough)),
+    block: Yup.number().positive(),
+    lot: Yup.number().positive(),
 });
 
 export const BoroughBlockLotSearch: React.FC = () => (
-    <Formik initialValues={{ a: '' }} onSubmit={() => {}}>
-        <Dropdown label='boroughs' name='boroughs'>
-            <option value=''>Select a borough</option>
-        </Dropdown>
+    <Formik
+        validationSchema={validationSchema}
+        initialValues={{}}
+        onSubmit={() => {}}
+    >
+        <Form>
+            <Dropdown label='boroughs' name='boroughs'>
+                <option value=''>Select a borough</option>
+                {Object.values(Borough).map((boroughName) => (
+                    <option key={boroughName} value={boroughName}>
+                        {boroughName}
+                    </option>
+                ))}
+            </Dropdown>
+            <Input name={'block'} type={'number'} placeholder={'block'} />
+            <Input name={'lot'} type={'number'} placeholder={'lot'} />
+            <button type='submit'>Submit</button>
+        </Form>
     </Formik>
 );

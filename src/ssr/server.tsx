@@ -3,11 +3,11 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { ApolloClient } from 'apollo-client';
-import { ApolloProvider } from '@apollo/react-common';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { renderToStringWithData } from '@apollo/react-ssr';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
-import { Main } from '../main';
+import { Home } from '../home';
 
 global.fetch = require('node-fetch');
 const app = express();
@@ -40,7 +40,7 @@ app.use((req, res) => {
     const client = new ApolloClient({
         ssrMode: true,
         link: createHttpLink({
-            uri: 'http://localhost:3000',
+            uri: 'http://localhost:4000/graphql',
             credentials: 'same-origin',
             headers: {
                 cookie: req.header('Cookie'),
@@ -54,7 +54,7 @@ app.use((req, res) => {
     const App = (
         <ApolloProvider client={client}>
             <StaticRouter location={req.url} context={context}>
-                <Main />
+                <Home />
             </StaticRouter>
         </ApolloProvider>
     );

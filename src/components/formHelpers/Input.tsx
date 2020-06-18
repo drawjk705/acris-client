@@ -7,7 +7,7 @@ export const Input: React.FC<InputProps> = ({ label, ...props }) => {
 
     return (
         <>
-            {label && <label htmlFor={name}>{label}</label>}
+            {label && <label htmlFor={props.name}>{label}</label>}
             <input className={'text-input'} {...field} {...props} />
             {meta.touched && meta.error ? (
                 <div className='error'>{meta.error}</div>

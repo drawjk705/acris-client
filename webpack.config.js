@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 const webpackNodeExternals = require('webpack-node-externals');
+
 require('dotenv').config('../../.env');
 
 const isDev = process.env.IS_DEV;
@@ -11,11 +12,11 @@ const getConfig = (overrides = {}) => ({
     target: 'node',
     entry: './src/ssr/server.tsx',
     plugins: [new CleanWebpackPlugin()],
+    devtool: 'eval-source-map',
     devServer: {
         contentBase: './build',
         hot: true,
     },
-
     module: {
         rules: [
             {
