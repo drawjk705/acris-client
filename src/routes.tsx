@@ -7,7 +7,12 @@ export type RouteProps = {
     component: React.FC;
 };
 
-export const Routes: { [key: string]: RouteProps } = {
+export interface IRoutes {
+    Home: RouteProps;
+    PropertyResult: RouteProps;
+}
+
+export const Routes: IRoutes = {
     Home: {
         path: '/',
         exact: true,

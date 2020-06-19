@@ -22,7 +22,12 @@ const getConfig = (overrides = {}) => ({
             {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
-                exclude: [/node_modules/, /__test__/, /__stories__/],
+                exclude: [
+                    /node_modules/,
+                    /__test__/,
+                    /__stories__/,
+                    /__mocks__/,
+                ],
             },
         ],
     },

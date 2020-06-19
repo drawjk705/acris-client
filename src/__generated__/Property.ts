@@ -3,11 +3,18 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { BoroughBlockLotInput, Borough, ViolationCurrentStatus, ViolationStatus } from "./globalTypes";
+import { BoroughBlockLotInput, Borough } from "./globalTypes";
 
 // ====================================================
 // GraphQL query operation: Property
 // ====================================================
+
+export interface Property_property_propertyType {
+  __typename: "PropertyType";
+  description: string | null;
+  propertyType: string | null;
+  recordType: string | null;
+}
 
 export interface Property_property_document_parties_address {
   __typename: "Address";
@@ -21,8 +28,19 @@ export interface Property_property_document_parties_address {
 export interface Property_property_document_parties {
   __typename: "Party";
   name: string | null;
+  partyType: string | null;
   documentId: string | null;
   address: Property_property_document_parties_address | null;
+}
+
+export interface Property_property_document_type {
+  __typename: "DocumentType";
+  typeId: string;
+  documentType: string | null;
+  classCodeDescription: string | null;
+  partyOneType: string | null;
+  partyTwoType: string | null;
+  partyThreeType: string | null;
 }
 
 export interface Property_property_document {
@@ -32,31 +50,7 @@ export interface Property_property_document {
   date: any | null;
   id: string;
   parties: Property_property_document_parties[] | null;
-  type: string | null;
-}
-
-export interface Property_property_housingMaintenanceCodeViolations {
-  __typename: "HousingMaintenanceCodeViolation";
-  apartment: string | null;
-  communityBoard: string | null;
-  currentStatus: ViolationCurrentStatus | null;
-  inspectionDate: string | null;
-  newCertifyByDate: any | null;
-  newCorrectByDate: any | null;
-  novDescription: string | null;
-  novIssuedDate: any | null;
-  orderNumber: string | null;
-  originalCertifyByDate: any | null;
-  originalCorrectByDate: any | null;
-  story: string | null;
-  violationStatus: ViolationStatus | null;
-}
-
-export interface Property_property_propertyType {
-  __typename: "PropertyType";
-  description: string | null;
-  propertyType: string | null;
-  recordType: string | null;
+  type: Property_property_document_type;
 }
 
 export interface Property_property_taxClassData_assessmentAndExemptionValuations_actual_assessment {
@@ -446,15 +440,15 @@ export interface Property_property_taxClassData_dimensions {
 
 export interface Property_property_taxClassData {
   __typename: "TaxClassData";
-  assessmentAndExemptionValuations: Property_property_taxClassData_assessmentAndExemptionValuations | null;
   buildingConstructionYear: string | null;
   coopApartmentCount: number | null;
   coopIdNumber: number | null;
-  dimensions: Property_property_taxClassData_dimensions | null;
   hasExtension: boolean | null;
   storyCount: number | null;
   unitCount: number | null;
   zoningCode: string | null;
+  assessmentAndExemptionValuations: Property_property_taxClassData_assessmentAndExemptionValuations | null;
+  dimensions: Property_property_taxClassData_dimensions | null;
 }
 
 export interface Property_property_valuationAndAssessmentData {
@@ -476,17 +470,16 @@ export interface Property_property_valuationAndAssessmentData {
 export interface Property_property {
   __typename: "Property";
   bble: string;
+  borough: Borough;
   block: number;
   lot: number;
-  borough: Borough;
-  document: Property_property_document | null;
-  housingMaintenanceCodeViolations: (Property_property_housingMaintenanceCodeViolations | null)[];
-  propertyType: Property_property_propertyType | null;
-  registrationId: number;
+  registrationId: number | null;
   streetNumber: string | null;
   streetName: string | null;
-  taxClassData: (Property_property_taxClassData | null)[];
   unit: string | null;
+  propertyType: Property_property_propertyType | null;
+  document: Property_property_document | null;
+  taxClassData: (Property_property_taxClassData | null)[];
   valuationAndAssessmentData: (Property_property_valuationAndAssessmentData | null)[];
 }
 

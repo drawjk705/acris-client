@@ -25,7 +25,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         const queryString = `streetName=${encodeURIComponent(
             searchInput.streetName
         )}&streetNumber=${encodeURIComponent(searchInput.streetNumber)}`;
-        return <Redirect to={`${Routes.Property.path}?${queryString}`} />;
+        return <Redirect to={`${Routes.PropertyResult.path}?${queryString}`} />;
     }
 
     return (
