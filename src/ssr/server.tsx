@@ -59,16 +59,23 @@ app.use((req, res) => {
         </ApolloProvider>
     );
 
-    renderToStringWithData(WrappedApp).then((content) => {
-        const initialState = client.extract();
-        const html = <Html content={content} state={initialState} />;
+    renderToStringWithData(WrappedApp)
+        .then((content) => {
+            const initialState = client.extract();
+            const html = <Html content={content} state={initialState} />;
 
-        res.status(200)
-            .send(
-                `<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(html)}`
-            )
-            .end();
-    });
+            res.status(200)
+                .send(
+                    `<!doctype html>\n${ReactDOMServer.renderToStaticMarkup(
+                        html
+                    )}`
+                )
+                .end();
+        })
+        .catch((e) => {
+            console.log('oh no');
+            console.log(e);
+        });
 });
 
 app.listen(PORT, () => {
