@@ -7,7 +7,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { renderToStringWithData } from '@apollo/react-ssr';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
-import { Home } from '../home';
+import { App } from '../App';
 
 global.fetch = require('node-fetch');
 const app = express();
@@ -51,15 +51,15 @@ app.use((req, res) => {
 
     const context = {};
 
-    const App = (
+    const WrappedApp = (
         <ApolloProvider client={client}>
             <StaticRouter location={req.url} context={context}>
-                <Home />
+                <App />
             </StaticRouter>
         </ApolloProvider>
     );
 
-    renderToStringWithData(App).then((content) => {
+    renderToStringWithData(WrappedApp).then((content) => {
         const initialState = client.extract();
         const html = <Html content={content} state={initialState} />;
 
