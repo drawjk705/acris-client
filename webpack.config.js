@@ -5,10 +5,10 @@ const webpackNodeExternals = require('webpack-node-externals');
 
 require('dotenv').config('../../.env');
 
-const isDev = process.env.IS_DEV;
+const DEV = process.env.NODE_ENV;
 
 const getConfig = (overrides = {}) => ({
-    mode: isDev ? 'development' : 'production',
+    mode: DEV ? 'development' : 'production',
     target: 'node',
     entry: './src/ssr/server.tsx',
     plugins: [new CleanWebpackPlugin()],

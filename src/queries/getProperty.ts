@@ -1,28 +1,20 @@
 import gql from 'graphql-tag';
 import { propertyFragment } from './fragments';
+import { BoroughBlockLotInput } from '../__generated__/globalTypes';
 
-export const GET_PROPERTY = {
-    byAddress: gql`
-        query propertyByAddress {
-            property(streetNumber: "200", streetName: "west 85th street") {
-                ...propertyFragment
-            }
-        }
-        ${propertyFragment}
-    `,
-
-    byBoroughBlockLot: gql`
-        query propertyByBoroughBlockLot(
-            $borough: Borough!
-            $block: Int!
-            $lot: Int!
+export const GET_PROPERTY = gql`
+    query Property(
+        $streetNumber: String
+        $streetName: String
+        $boroughBlockLotInput: BoroughBlockLotInput
+    ) {
+        property(
+            streetNumber: $streetNumber
+            streetName: $streetName
+            boroughBlockLot: $boroughBlockLotInput
         ) {
-            property(
-                boroughBlockLot: { borough: $borough, block: $block, lot: $lot }
-            ) {
-                ...propertyFragment
-            }
+            ...propertyFragment
         }
-        ${propertyFragment}
-    `,
-};
+    }
+    ${propertyFragment}
+`;

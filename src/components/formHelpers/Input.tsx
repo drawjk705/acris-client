@@ -2,7 +2,7 @@ import React from 'react';
 import { useField } from 'formik';
 import { InputProps } from './types';
 
-export const Input: React.FC<InputProps> = ({ label, ...props }) => {
+const InputFactory: React.FC<InputProps> = ({ label, ...props }) => {
     const [field, meta] = useField({ ...props });
 
     return (
@@ -14,4 +14,13 @@ export const Input: React.FC<InputProps> = ({ label, ...props }) => {
             ) : null}
         </>
     );
+};
+
+export const Input = {
+    Number: (props: Omit<InputProps, 'type'>) => (
+        <InputFactory type={'number'} {...props} />
+    ),
+    String: (props: Omit<InputProps, 'type'>) => (
+        <InputFactory type={'string'} {...props} />
+    ),
 };

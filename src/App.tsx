@@ -1,12 +1,18 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { BoroughBlockLotSearch } from './components/SearchSection/BoroughBlockLotSearch/BoroughBlockLotSearch';
-import { Result } from './components/Result/Result';
+import { PropertyResultContainer } from './pages/Results/PropertyResult/PropertyResultContainer';
+import { SearchBar } from './pages/Search/SearchBar/SearchBar';
+import { RouteProps, Routes } from './routes';
+import { withQueryParamProps } from './utils/withQueryParamProps';
 
-export const App = () => (
-    <Result />
-    // <Switch>
-    //     <Route exact path='/' component={BoroughBlockLotSearch} />
-    //     <Route exact path='/result' component={Result} />
-    // </Switch>
-);
+const renderRoutes = (routes: { [key: string]: RouteProps }) =>
+    Object.values(routes).map(({ path, component, exact }) => (
+        <Route
+            key={`route_${path}`}
+            exact={!!exact}
+            path={path}
+            component={withQueryParamProps(component)}
+        />
+    ));
+
+export const App = () => <Switch>{renderRoutes(Routes)}</Switch>;

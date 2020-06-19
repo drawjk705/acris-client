@@ -49,6 +49,12 @@ export enum ViolationStatus {
   Open = "Open",
 }
 
+export interface BoroughBlockLotInput {
+  borough: Borough;
+  block: number;
+  lot: number;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

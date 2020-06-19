@@ -2,11 +2,8 @@ import express from 'express';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router';
-import { ApolloClient } from 'apollo-client';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { renderToStringWithData } from '@apollo/react-ssr';
-import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
-import { createHttpLink } from 'apollo-link-http';
 import { App } from '../App';
 import { withHtml } from './withHtml';
 import { getApolloClient } from './getApolloClient';
@@ -51,6 +48,7 @@ app.use((req, res) => {
                 .end();
         })
         .catch((e) => {
+            console.log(e);
             console.log('Could not perform render to string with data');
         });
 });
