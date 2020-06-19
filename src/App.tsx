@@ -4,8 +4,9 @@ import { BoroughBlockLotSearch } from './components/SearchSection/BoroughBlockLo
 import { Result } from './components/Result/Result';
 
 export const App = () => (
-    <Switch>
-        <Route exact path='/' component={BoroughBlockLotSearch} />
-        <Route exact path='/result' component={Result} />
-    </Switch>
+    <Result />
+    // <Switch>
+    //     <Route exact path='/' component={BoroughBlockLotSearch} />
+    //     <Route exact path='/result' component={Result} />
+    // </Switch>
 );

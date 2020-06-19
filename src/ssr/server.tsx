@@ -8,6 +8,9 @@ import { renderToStringWithData } from '@apollo/react-ssr';
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
 import { createHttpLink } from 'apollo-link-http';
 import { App } from '../App';
+import { withHtml } from './withHtml';
+import { getApolloClient } from './getApolloClient';
+import { HttpLink } from 'apollo-boost';
 
 global.fetch = require('node-fetch');
 const app = express();
@@ -15,39 +18,14 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('build/public'));
 
-const Html = ({
-    content,
-    state,
-}: {
-    content: string;
-    state: NormalizedCacheObject;
-}) => (
-    <html>
-        <body>
-            <div id='root' dangerouslySetInnerHTML={{ __html: content }} />
-            <script
-                dangerouslySetInnerHTML={{
-                    __html: `window.__APOLLO_STATE__=${JSON.stringify(
-                        state
-                    ).replace(/</g, '\\u003c')};`,
-                }}
-                src={'main.client_bundle.js'}
-            />
-        </body>
-    </html>
-);
 app.use((req, res) => {
-    const client = new ApolloClient({
-        ssrMode: true,
-        link: createHttpLink({
-            uri: 'http://localhost:4000/graphql',
-            credentials: 'same-origin',
-            headers: {
-                cookie: req.header('Cookie'),
-            },
-        }),
-        cache: new InMemoryCache(),
+    const link = new HttpLink({
+        uri: 'http://localhost:4000/graphql',
+        credentials: 'same-origin',
+        headers: { cookie: req.header('Cookie') },
     });
+
+    const client = getApolloClient([link]);
 
     const context = {};
 
@@ -62,7 +40,7 @@ app.use((req, res) => {
     renderToStringWithData(WrappedApp)
         .then((content) => {
             const initialState = client.extract();
-            const html = <Html content={content} state={initialState} />;
+            const html = withHtml({ content, state: initialState });
 
             res.status(200)
                 .send(
@@ -73,8 +51,7 @@ app.use((req, res) => {
                 .end();
         })
         .catch((e) => {
-            console.log('oh no');
-            console.log(e);
+            console.log('Could not perform render to string with data');
         });
 });
 

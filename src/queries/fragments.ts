@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const propertyTypeFragment = gql`
-    fragment propertyType on PropertyType {
+    fragment propertyTypeFragment on PropertyType {
         description
         propertyType
         recordType
@@ -9,7 +9,7 @@ export const propertyTypeFragment = gql`
 `;
 
 export const addressFragment = gql`
-    fragment address on Address {
+    fragment addressFragment on Address {
         addressLineOne
         addressLineTwo
         city
@@ -19,11 +19,11 @@ export const addressFragment = gql`
 `;
 
 export const partyFragment = gql`
-    fragment party on Party {
+    fragment partyFragment on Party {
         name
         documentId
         address {
-            ...address
+            ...addressFragment
         }
     }
 
@@ -31,13 +31,13 @@ export const partyFragment = gql`
 `;
 
 export const documentFragment = gql`
-    fragment document on Document {
+    fragment documentFragment on Document {
         amount
         crfn
         date
         id
         parties {
-            ...party
+            ...partyFragment
         }
         type
     }
@@ -46,7 +46,7 @@ export const documentFragment = gql`
 `;
 
 export const housingMaintenanceCodeViolationFragment = gql`
-    fragment housingMaintenanceCodeViolation on HousingMaintenanceCodeViolation {
+    fragment housingMaintenanceCodeViolationFragment on HousingMaintenanceCodeViolation {
         apartment
         communityBoard
         currentStatus
@@ -64,9 +64,9 @@ export const housingMaintenanceCodeViolationFragment = gql`
 `;
 
 export const registrationContactFragment = gql`
-    fragment registrationContact on RegistrationContacts {
+    fragment registrationContactFragment on RegistrationContacts {
         businessAddress {
-            ...address
+            ...addressFragment
         }
         contactDescription
         corporationName
@@ -81,7 +81,7 @@ export const registrationContactFragment = gql`
 `;
 
 export const hpdJurisdictionDataFragment = gql`
-    fragment hpdJurisdictionData on HpdJurisdictionData {
+    fragment hpdJurisdictionDataFragment on HpdJurisdictionData {
         buildingId
         communityBoardId
         lifecycleStage
@@ -92,7 +92,7 @@ export const hpdJurisdictionDataFragment = gql`
         recordStatus
         recordStatusId
         registrationContacts {
-            ...registrationContact
+            ...registrationContactFragment
         }
         registrationId
     }
@@ -101,7 +101,7 @@ export const hpdJurisdictionDataFragment = gql`
 `;
 
 export const assessmentAndExemptionViolationFragment = gql`
-    fragment assessmentAndExemptionValuation on AssessmentAndExemptionValuation {
+    fragment assessmentAndExemptionValuationFragment on AssessmentAndExemptionValuation {
         assessment {
             landValue
             totalValue
@@ -114,63 +114,63 @@ export const assessmentAndExemptionViolationFragment = gql`
 `;
 
 export const assessmentAndExemptionViolationsFragment = gql`
-    fragment assessmentAndExemptionValuations on AssessmentAndExemptionValuations {
+    fragment assessmentAndExemptionValuationsFragment on AssessmentAndExemptionValuations {
         actual {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         changeByNoticeActual {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         changeByNoticeMarket {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         changeByNoticeTaxable {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         changeByNoticeTransitional {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         currentActual {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         currentMarket {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         currentTaxable {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         currentTransitional {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         finalActual {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         finalMarket {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         finalTransitional {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         market {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         taxable {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         tentativeActual {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         tentativeMarket {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         tentativeTaxable {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         tentativeTransitional {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
         transitional {
-            ...assessmentAndExemptionValuation
+            ...assessmentAndExemptionValuationFragment
         }
     }
 
@@ -178,9 +178,9 @@ export const assessmentAndExemptionViolationsFragment = gql`
 `;
 
 export const taxClassDataFragment = gql`
-    fragment taxClassData on TaxClassData {
+    fragment taxClassDataFragment on TaxClassData {
         assessmentAndExemptionValuations {
-            ...assessmentAndExemptionValuations
+            ...assessmentAndExemptionValuationsFragment
         }
         buildingConstructionYear
         coopApartmentCount
@@ -213,7 +213,7 @@ export const taxClassDataFragment = gql`
 `;
 
 export const valuationAndAssessmentDataFragment = gql`
-    fragment valuationAndAssessmentData on ValuationAndAssessmentData {
+    fragment valuationAndAssessmentDataFragment on ValuationAndAssessmentData {
         actualExemptLandTotal
         actualExemptLandValue
         actualLandValue
@@ -230,29 +230,29 @@ export const valuationAndAssessmentDataFragment = gql`
 `;
 
 export const propertyFragment = gql`
-    fragment property on Property {
+    fragment propertyFragment on Property {
         bble
         block
         lot
         borough
         document {
-            ...document
+            ...documentFragment
         }
         housingMaintenanceCodeViolations {
-            ...housingMaintenanceCodeViolation
+            ...housingMaintenanceCodeViolationFragment
         }
         propertyType {
-            ...propertyType
+            ...propertyTypeFragment
         }
         registrationId
         streetNumber
         streetName
         taxClassData {
-            ...taxClassData
+            ...taxClassDataFragment
         }
         unit
         valuationAndAssessmentData {
-            ...valuationAndAssessmentData
+            ...valuationAndAssessmentDataFragment
         }
     }
 

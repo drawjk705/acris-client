@@ -1,6 +1,7 @@
 import React from 'react';
-import { GET_PROPERTY } from '../../queries/getProperty';
 import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+import { GET_PROPERTY } from '../../queries/getProperty';
 
 export const Result: React.FC = () => {
     // const x = 1;
@@ -20,5 +21,5 @@ export const Result: React.FC = () => {
     //     return <div>oops</div>;
     // }
 
-    return <div>hello</div>;
+    return <div>{JSON.stringify(data)}</div>;
 };
