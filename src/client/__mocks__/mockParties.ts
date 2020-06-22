@@ -1,4 +1,6 @@
-export const mockParties = [
+import { Property_property_document_parties } from '../__generated__/Property';
+
+export const mockParties: Array<Property_property_document_parties> = [
     {
         name: '200 WEST 85TH STREET ASSOCIATES',
         partyType: '1',

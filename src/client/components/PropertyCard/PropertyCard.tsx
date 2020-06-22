@@ -1,8 +1,12 @@
 import React from 'react';
+import {
+    Property_property,
+    Property_property_document,
+} from '../../__generated__/Property';
 import styled from '@emotion/styled';
-import { Property_property } from '../../../__generated__/Property';
+import { DocumentCard } from '../DocumentCard/DocumentCard';
 
-export const PropertyResult: React.FC<Property_property> = (property) => (
+export const PropertyCard: React.FC<Property_property> = (property) => (
     <PropertyWrapper>
         <PropertyAddress>{`${property.streetNumber} ${property.streetName}`}</PropertyAddress>
         <BoroughBlockLotInfo>
@@ -11,15 +15,7 @@ export const PropertyResult: React.FC<Property_property> = (property) => (
             <li>{`Block: ${property.block}`}</li>
             <li>{`Lot: ${property.lot}`}</li>
         </BoroughBlockLotInfo>
-        <Document>
-            Document
-            <ul>
-                <li>{`Amount: ${property.document?.amount}`}</li>
-                <li>{`CRFN: ${property.document?.crfn}`}</li>
-                <li>{`Date: ${property.document?.date}`}</li>
-                <li>{`Type: ${property.document?.type}`}</li>
-            </ul>
-        </Document>
+        <DocumentCard {...(property.document as Property_property_document)} />
     </PropertyWrapper>
 );
 

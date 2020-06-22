@@ -1,7 +1,6 @@
 import React from 'react';
-import { PropertyResult } from '../PropertyResult';
-import { Property_property } from '../../../../__generated__/Property';
-import { Borough } from '../../../../__generated__/globalTypes';
+import { PropertyCard } from '../PropertyCard';
+import { Borough } from '../../../__generated__/globalTypes';
 
 export default { title: 'Property Result' };
 

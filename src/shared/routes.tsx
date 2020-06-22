@@ -1,15 +1,15 @@
-import { SearchBar } from './pages/Search/SearchBar/SearchBar';
-import { PropertyResultContainer } from './pages/Results/PropertyResult/PropertyResultContainer';
+import { SearchBar } from '../client/pages/Search/SearchBar/SearchBar';
+import { PropertyCardContainer } from '../client/components/PropertyCard/PropertyCardContainer';
 
-export type RouteProps = {
+export interface IRoute {
     path: string;
     exact?: boolean;
     component: React.FC;
-};
+}
 
 export interface IRoutes {
-    Home: RouteProps;
-    PropertyResult: RouteProps;
+    Home: IRoute;
+    PropertyResult: IRoute;
 }
 
 export const Routes: IRoutes = {
@@ -21,6 +21,6 @@ export const Routes: IRoutes = {
     PropertyResult: {
         path: '/property',
         exact: true,
-        component: PropertyResultContainer,
+        component: PropertyCardContainer,
     },
 };

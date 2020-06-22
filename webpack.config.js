@@ -10,7 +10,7 @@ const DEV = process.env.NODE_ENV;
 const getConfig = (overrides = {}) => ({
     mode: DEV ? 'development' : 'production',
     target: 'node',
-    entry: './src/ssr/server.tsx',
+    entry: './src/server/index.tsx',
     plugins: [new CleanWebpackPlugin()],
     devtool: 'eval-source-map',
     devServer: {
@@ -28,6 +28,10 @@ const getConfig = (overrides = {}) => ({
                     /__stories__/,
                     /__mocks__/,
                 ],
+            },
+            {
+                test: /\.svg$/,
+                use: ['react-svg-loader'],
             },
         ],
     },
@@ -47,7 +51,7 @@ const getConfig = (overrides = {}) => ({
 
 const serverConfig = getConfig();
 const clientConfig = getConfig({
-    entry: './src/index.tsx',
+    entry: './src/client/index.tsx',
     output: {
         filename: '[name].client_bundle.js',
         path: path.resolve(__dirname, './build/public'),

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_PROPERTY } from '../../../queries/getProperty';
+import { GET_PROPERTY } from '../../queries/getProperty';
+import { PropertyCard } from './PropertyCard';
 import {
     PropertyVariables,
     Property,
     Property_property,
-} from '../../../__generated__/Property';
-import { PropertyResult } from './PropertyResult';
+} from '../../__generated__/Property';
 
 const boroughBlockLotIsValid = ({ boroughBlockLotInput }: PropertyVariables) =>
     Number.isInteger(boroughBlockLotInput?.borough) &&
@@ -21,7 +21,7 @@ const streetNumberAndNameAreValid = ({
 const receivedValidInput = (props: PropertyVariables) =>
     boroughBlockLotIsValid(props) || streetNumberAndNameAreValid(props);
 
-export const PropertyResultContainer: React.FC<PropertyVariables> = (props) => {
+export const PropertyCardContainer: React.FC<PropertyVariables> = (props) => {
     const { loading, error, data } = useQuery<Property, PropertyVariables>(
         GET_PROPERTY,
         { variables: props, skip: !receivedValidInput(props) }
@@ -41,7 +41,7 @@ export const PropertyResultContainer: React.FC<PropertyVariables> = (props) => {
                 {data.property
                     .filter((property) => !!property)
                     .map((property, i) => (
-                        <PropertyResult
+                        <PropertyCard
                             key={i}
                             {...(property as Property_property)}
                         />

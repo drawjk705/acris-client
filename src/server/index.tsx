@@ -4,10 +4,11 @@ import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { renderToStringWithData } from '@apollo/react-ssr';
-import { App } from '../App';
+import { HttpLink } from 'apollo-boost';
+import { matchPath } from 'react-router-dom';
+import { App } from '../shared/App';
 import { withHtml } from './withHtml';
 import { getApolloClient } from './getApolloClient';
-import { HttpLink } from 'apollo-boost';
 
 global.fetch = require('node-fetch');
 const app = express();
