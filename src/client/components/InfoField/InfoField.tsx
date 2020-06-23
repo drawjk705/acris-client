@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 
 interface IInfoField {
     className?: string;
-    title: string | null | undefined;
-    value: string | null | undefined;
+    title: string;
+    value?: JSX.Element | string | null;
 }
 export const InfoField: React.FC<IInfoField> = ({
     className,
@@ -12,9 +12,9 @@ export const InfoField: React.FC<IInfoField> = ({
     value,
 }) => (
     <InfoFieldSectionWrapper className={className}>
-        <InfoFieldTitle>{title}</InfoFieldTitle>
+        <InfoFieldTitle>{`${title}:`}</InfoFieldTitle>
         <InfoFieldValue>
-            {`: ${value === null ? <i>'None specified'</i> : `${value}`}`}
+            {value === null ? <i>'None specified'</i> : value}
         </InfoFieldValue>
     </InfoFieldSectionWrapper>
 );
@@ -28,4 +28,6 @@ export const InfoFieldTitle = styled.span({
     fontWeight: 'bold',
 });
 
-export const InfoFieldValue = styled.span({});
+export const InfoFieldValue = styled.span({
+    marginLeft: '5px',
+});

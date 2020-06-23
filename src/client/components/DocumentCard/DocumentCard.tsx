@@ -16,6 +16,15 @@ export const DocumentCard: React.FC<Property_property_document> = ({
     parties,
     type: { documentType, classCodeDescription, ...partyTypes },
 }) => {
+    const idWithLink = (
+        <a
+            href={`https://a836-acris.nyc.gov/DS/DocumentSearch/DocumentImageView?doc_id=${id}`}
+            target='_blank'
+        >
+            {id}
+        </a>
+    );
+
     return (
         <Card header='Document'>
             <StyledInfoField
@@ -23,7 +32,7 @@ export const DocumentCard: React.FC<Property_property_document> = ({
                 value={formatDollarAmount(amount)}
             />
             <StyledInfoField title={'CRFN'} value={crfn} />
-            <StyledInfoField title={'ID'} value={id} />
+            <StyledInfoField title={'ID'} value={idWithLink} />
             <StyledInfoField
                 title={'Date'}
                 value={Intl.DateTimeFormat('en-US').format(new Date(date))}

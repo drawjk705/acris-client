@@ -8,7 +8,6 @@
 // ====================================================
 
 export interface addressFragment {
-  __typename: "Address";
   addressLineOne: string | null;
   addressLineTwo: string | null;
   city: string | null;

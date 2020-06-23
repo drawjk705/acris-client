@@ -5,7 +5,6 @@ import { StaticRouter } from 'react-router';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { renderToStringWithData } from '@apollo/react-ssr';
 import { HttpLink } from 'apollo-boost';
-import { matchPath } from 'react-router-dom';
 import { App } from '../shared/App';
 import { withHtml } from './withHtml';
 import { getApolloClient } from './getApolloClient';
@@ -16,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static('build/public'));
 
-app.use((req, res) => {
+app.use((req, res, next) => {
     const link = new HttpLink({
         uri: 'http://localhost:4000/graphql',
         credentials: 'same-origin',
@@ -25,7 +24,7 @@ app.use((req, res) => {
 
     const client = getApolloClient([link]);
 
-    const context = {};
+    const context = req.query || {};
 
     const WrappedApp = (
         <ApolloProvider client={client}>
@@ -51,6 +50,7 @@ app.use((req, res) => {
         .catch((e) => {
             console.log(e);
             console.log('Could not perform render to string with data');
+            next();
         });
 });
 

@@ -11,9 +11,7 @@ export const mockParties: Array<Property_property_document_parties> = [
             city: 'NEW YORK',
             state: 'NY',
             zipCode: '10023',
-            __typename: 'Address',
         },
-        __typename: 'Party',
     },
     {
         name: '200 WEST 85TH STREET, LLC',
@@ -25,8 +23,6 @@ export const mockParties: Array<Property_property_document_parties> = [
             city: 'NEW YORK',
             state: 'NY',
             zipCode: '10023',
-            __typename: 'Address',
         },
-        __typename: 'Party',
     },
 ];

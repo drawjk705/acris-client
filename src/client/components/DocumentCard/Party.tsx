@@ -1,20 +1,38 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Property_property_document_parties } from '../../__generated__/Property';
 import { uppercaseFirstLetters } from '../../utils/uppercaseFirstLetters';
 
-export const Party: React.FC<Property_property_document_parties> = ({
+interface IParty {
+    className?: string;
+    name?: string | null;
+    addressLineOne?: string | null;
+    addressLineTwo?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zipCode?: string | null;
+}
+export const Party: React.FC<IParty> = ({
+    className,
     name,
-    address,
+    addressLineOne,
+    addressLineTwo,
+    city,
+    state,
+    zipCode,
 }) => {
-    const { addressLineOne, addressLineTwo, city, state, zipCode } =
-        address || {};
+    const hasAddressProps = !!(
+        addressLineOne ||
+        addressLineTwo ||
+        city ||
+        state ||
+        zipCode
+    );
 
     return (
-        <PartyWrapper>
-            <Name>{uppercaseFirstLetters(name)}</Name>
-            {address && (
-                <Address>
+        <PartyWrapper className={className}>
+            <Name className={className}>{uppercaseFirstLetters(name)}</Name>
+            {hasAddressProps ? (
+                <Address className={className}>
                     <AddressLine
                         addressLine={uppercaseFirstLetters(addressLineOne)}
                     />
@@ -24,9 +42,13 @@ export const Party: React.FC<Property_property_document_parties> = ({
                     <AddressLine
                         addressLine={`${
                             city ? uppercaseFirstLetters(city) + ', ' : ''
-                        }${state ? state + ' ' : ''}${zipCode}`}
+                        }${state ? state + ' ' : ''}${zipCode ? zipCode : ''}`}
                     />
                 </Address>
+            ) : (
+                <NoAddressInformation className={className}>
+                    No address information
+                </NoAddressInformation>
             )}
         </PartyWrapper>
     );
@@ -49,4 +71,8 @@ const PartyWrapper = styled.div({
 const Name = styled.div({});
 
 const Address = styled.div({});
+const NoAddressInformation = styled.div({
+    marginLeft: '10px',
+    fontStyle: 'italic',
+});
 const AddressLineWrapper = styled.div({});

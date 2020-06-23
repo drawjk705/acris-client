@@ -24,9 +24,7 @@ export const CollapsibleItem: React.FC<ICollapsibleItem> = ({
             <TitleWrapper onClick={() => setIsOpened(!isOpened)}>
                 {title} <StyledChevron />
             </TitleWrapper>
-            <ContentWrapper>
-                <ContentOpacityWrapper>{children}</ContentOpacityWrapper>
-            </ContentWrapper>
+            <ContentWrapper>{children}</ContentWrapper>
         </CollapsibleItemWrapper>
     );
 };
@@ -47,14 +45,14 @@ const CollapsibleItemWrapper = styled.div(
         },
 
         [`${ContentWrapper}`]: isOpened && {
-            height: `${expandedHeight}px`,
+            // height: `${expandedHeight}px`,
             display: 'flex',
         },
 
-        [`${ContentOpacityWrapper}`]: isOpened && {
-            opacity: '1',
-            display: 'flex',
-        },
+        // [`${ContentOpacityWrapper}`]: isOpened && {
+        //     opacity: '1',
+        //     display: 'flex',
+        // },
     })
 );
 
@@ -74,28 +72,28 @@ const StyledChevron = styled(ChevronDown)({
 });
 
 const ContentWrapper = styled.div({
-    transitionTimingFunction:
-        'cubic-bezier(0.895, 0.03, 0.685, 0.22) ease-in-out',
-    transitionDuration: '0.5s',
-    transitionProperty: 'height',
-    height: '0px',
+    // transitionTimingFunction:
+    //     'cubic-bezier(0.895, 0.03, 0.685, 0.22) ease-in-out',
+    // transitionDuration: '0.5s',
+    // transitionProperty: 'height',
+    // height: '0px',
     display: 'none',
 });
 
-const ContentOpacityWrapper = styled.div({
-    opacity: '0',
-    transform: 'translateY(0)',
-    transitionDelay: '0.2s',
-    transitionTimingFunction: 'ease-in-out',
-    transitionDuration: '0.2s',
-    transitionProperty: 'opacity, transform',
-    display: 'none',
-});
+// const ContentOpacityWrapper = styled.div({
+//     // opacity: '0',
+//     transform: 'translateY(0)',
+//     transitionDelay: '0.2s',
+//     transitionTimingFunction: 'ease-in-out',
+//     transitionDuration: '0.2s',
+//     transitionProperty: 'opacity, transform',
+//     display: 'none',
+// });
 
 export const CollapsibleItemComponents = {
     CollapsibleItemWrapper,
     Chevron: StyledChevron,
     TitleWrapper,
     ContentWrapper,
-    ContentOpacityWrapper,
+    // ContentOpacityWrapper,
 };

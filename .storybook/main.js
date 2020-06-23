@@ -8,6 +8,8 @@ module.exports = {
     webpackFinal: async (config) => {
         // do mutation to the config
 
+        console.log(config);
+
         const rules = config.module.rules;
 
         // modify storybook's file-loader rule to avoid conflicts with your inline svg

@@ -12,7 +12,6 @@ export const mockValuationAndAssessmentData = [
         transitionalExemptionLandValue: null,
         transitionalLandValue: 387450,
         transitionalTotalValue: 1207440,
-        __typename: 'ValuationAndAssessmentData',
     },
     {
         actualExemptLandTotal: 0,
@@ -27,7 +26,6 @@ export const mockValuationAndAssessmentData = [
         transitionalExemptionLandValue: null,
         transitionalLandValue: 387450,
         transitionalTotalValue: 1041750,
-        __typename: 'ValuationAndAssessmentData',
     },
     {
         actualExemptLandTotal: 0,
@@ -42,7 +40,6 @@ export const mockValuationAndAssessmentData = [
         transitionalExemptionLandValue: null,
         transitionalLandValue: 387450,
         transitionalTotalValue: 1134000,
-        __typename: 'ValuationAndAssessmentData',
     },
     {
         actualExemptLandTotal: 0,
@@ -57,7 +54,6 @@ export const mockValuationAndAssessmentData = [
         transitionalExemptionLandValue: null,
         transitionalLandValue: 387450,
         transitionalTotalValue: 1194390,
-        __typename: 'ValuationAndAssessmentData',
     },
     {
         actualExemptLandTotal: 0,
@@ -72,7 +68,6 @@ export const mockValuationAndAssessmentData = [
         transitionalExemptionLandValue: null,
         transitionalLandValue: 387450,
         transitionalTotalValue: 2751620,
-        __typename: 'ValuationAndAssessmentData',
     },
     {
         actualExemptLandTotal: 0,
@@ -87,7 +82,6 @@ export const mockValuationAndAssessmentData = [
         transitionalExemptionLandValue: null,
         transitionalLandValue: 387450,
         transitionalTotalValue: 2456510,
-        __typename: 'ValuationAndAssessmentData',
     },
     {
         actualExemptLandTotal: 0,
@@ -102,7 +96,6 @@ export const mockValuationAndAssessmentData = [
         transitionalExemptionLandValue: null,
         transitionalLandValue: 387450,
         transitionalTotalValue: 2073560,
-        __typename: 'ValuationAndAssessmentData',
     },
     {
         actualExemptLandTotal: 0,
@@ -117,7 +110,6 @@ export const mockValuationAndAssessmentData = [
         transitionalExemptionLandValue: null,
         transitionalLandValue: 387450,
         transitionalTotalValue: 1768370,
-        __typename: 'ValuationAndAssessmentData',
     },
     {
         actualExemptLandTotal: 0,
@@ -132,6 +124,5 @@ export const mockValuationAndAssessmentData = [
         transitionalExemptionLandValue: null,
         transitionalLandValue: 387450,
         transitionalTotalValue: 1495170,
-        __typename: 'ValuationAndAssessmentData',
     },
 ];

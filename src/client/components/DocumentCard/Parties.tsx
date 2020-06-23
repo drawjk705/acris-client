@@ -50,7 +50,11 @@ export const Parties: React.FC<IParties> = ({
                         expandedHeightPx={60}
                     >
                         {partiesByType[i + 1].map((party) => (
-                            <Party {...party} key={i} />
+                            <StyledParty
+                                name={party.name}
+                                {...party.address}
+                                key={i}
+                            />
                         ))}
                     </StyledCollapsibleItem>
                 );
@@ -71,5 +75,9 @@ const PartyTypeWrapper = styled.div({
 });
 
 const StyledCollapsibleItem = styled(CollapsibleItem)({
-    marginBottom: '10px',
+    paddingBottom: '10px',
+});
+
+const StyledParty = styled(Party)({
+    paddingLeft: '10px',
 });

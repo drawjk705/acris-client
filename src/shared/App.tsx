@@ -1,16 +1,19 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Routes, IRoutes } from './routes';
-import { withQueryParamProps } from '../client/utils/withQueryParamProps';
+import { routes } from './routes';
+import { withQueryParamProps } from './withQueryParamProps';
 
-const renderRoutes = (routes: IRoutes) =>
-    Object.values(routes).map(({ path, component, exact }) => (
-        <Route
-            key={`route_${path}`}
-            exact={!!exact}
-            path={path}
-            component={withQueryParamProps(component)}
-        />
-    ));
-
-export const App = () => <Switch>{renderRoutes(Routes)}</Switch>;
+export const App = () => (
+    <div>
+        <Switch>
+            {routes.map(({ path, exact, component }) => (
+                <Route
+                    key={path}
+                    path={path}
+                    exact={exact}
+                    component={withQueryParamProps(component)}
+                />
+            ))}
+        </Switch>
+    </div>
+);

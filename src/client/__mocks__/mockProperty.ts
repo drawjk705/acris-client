@@ -14,7 +14,6 @@ export const mockProperty = {
         description: 'APARTMENT BUILDING',
         propertyType: 'AP',
         recordType: 'G',
-        __typename: 'PropertyType',
     },
     registrationId: 102033,
     streetNumber: '200',
@@ -22,5 +21,4 @@ export const mockProperty = {
     taxClassData: mockTaxClassData,
     unit: null,
     valuationAndAssessmentData: mockValuationAndAssessmentData,
-    __typename: 'Property',
 };

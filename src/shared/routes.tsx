@@ -7,20 +7,15 @@ export interface IRoute {
     component: React.FC;
 }
 
-export interface IRoutes {
-    Home: IRoute;
-    PropertyResult: IRoute;
-}
-
-export const Routes: IRoutes = {
-    Home: {
+export const routes: Array<IRoute> = [
+    {
         path: '/',
         exact: true,
         component: SearchBar,
     },
-    PropertyResult: {
+    {
         path: '/property',
         exact: true,
         component: PropertyCardContainer,
     },
-};
+];

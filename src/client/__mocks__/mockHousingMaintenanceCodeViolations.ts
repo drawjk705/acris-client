@@ -14,7 +14,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2019-10-02T04:00:00.000Z',
         story: 'Fire Escape',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: null,
@@ -31,7 +30,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2019-10-02T04:00:00.000Z',
         story: 'Fire Escape',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: null,
@@ -48,7 +46,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2019-10-02T04:00:00.000Z',
         story: 'Fire Escape',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: null,
@@ -65,7 +62,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2019-10-02T04:00:00.000Z',
         story: 'Fire Escape',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: null,
@@ -82,7 +78,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-08-09T04:00:00.000Z',
         story: 'Yards / Courts',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: '18',
@@ -99,7 +94,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: '5',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: '18',
@@ -116,7 +110,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: '5',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: '18',
@@ -133,7 +126,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: '5',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: '18',
@@ -150,7 +142,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: '5',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: 'PHS',
@@ -167,7 +158,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: '6',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: null,
@@ -184,7 +174,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: null,
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: null,
@@ -201,7 +190,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-08-09T04:00:00.000Z',
         story: null,
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: 'PHS',
@@ -218,7 +206,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: '6',
         violationStatus: 'Close',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: '19',
@@ -235,7 +222,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: '5',
         violationStatus: 'Open',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: '19',
@@ -252,7 +238,6 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: '5',
         violationStatus: 'Open',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
     {
         apartment: '19',
@@ -269,6 +254,5 @@ export const mockHousingMaintenanceCodeViolations = [
         originalCorrectByDate: '2016-09-07T04:00:00.000Z',
         story: '5',
         violationStatus: 'Open',
-        __typename: 'HousingMaintenanceCodeViolation',
     },
 ];

@@ -3,7 +3,6 @@ import { Formik, Form } from 'formik';
 import { Redirect } from 'react-router';
 import * as Yup from 'yup';
 import { Input } from '../../../components/formHelpers/Input';
-import { Routes } from '../../../routes';
 
 const validationSchema = Yup.object({
     streetNumber: Yup.string().required(),
@@ -25,7 +24,8 @@ export const SearchBar: React.FC<SearchBarProps> = ({
         const queryString = `streetName=${encodeURIComponent(
             searchInput.streetName
         )}&streetNumber=${encodeURIComponent(searchInput.streetNumber)}`;
-        return <Redirect to={`${Routes.PropertyResult.path}?${queryString}`} />;
+
+        window.location.assign(`/property?${queryString}`);
     }
 
     return (

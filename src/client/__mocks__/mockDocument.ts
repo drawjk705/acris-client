@@ -14,7 +14,5 @@ export const mockDocument: Property_property_document = {
         partyOneType: 'MORTGAGER/BORROWER',
         partyTwoType: 'MORTGAGEE/LENDER',
         partyThreeType: null,
-        __typename: 'DocumentType',
     },
-    __typename: 'Document',
 };
