@@ -1,5 +1,5 @@
-import { SearchBar } from '../client/pages/Search/SearchBar/SearchBar';
 import { PropertyCardContainer } from '../client/components/PropertyCard/PropertyCardContainer';
+import { AddressSearch } from '../client/components/SearchHeader/AddressSearch/AddressSearch';
 
 export interface IRoute {
     path: string;
@@ -11,7 +11,7 @@ export const routes: Array<IRoute> = [
     {
         path: '/',
         exact: true,
-        component: SearchBar,
+        component: AddressSearch,
     },
     {
         path: '/property',

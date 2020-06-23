@@ -8,18 +8,25 @@ module.exports = {
     webpackFinal: async (config) => {
         // do mutation to the config
 
-        console.log(config);
-
         const rules = config.module.rules;
 
         // modify storybook's file-loader rule to avoid conflicts with your inline svg
         const fileLoaderRule = rules.find((rule) => rule.test.test('.svg'));
-        fileLoaderRule.exclude = /\.inline.svg$/;
+        fileLoaderRule.exclude = /\.svg$/;
 
         rules.push({
-            test: /\.inline.svg$/,
+            test: /\.svg$/,
             use: ['react-svg-loader'],
         });
+
+        config.module.rules.push({
+            test: /\.(tsx|ts)$/,
+            use: [
+                { loader: require.resolve('babel-loader') },
+                { loader: require.resolve('ts-loader') },
+            ],
+        });
+        config.resolve.extensions.push('.ts', '.tsx');
 
         return config;
     },
