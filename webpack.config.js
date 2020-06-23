@@ -21,12 +21,30 @@ const getConfig = (overrides = {}) => ({
         rules: [
             {
                 test: [/\.tsx?$/, /\.ts/],
-                use: 'ts-loader',
                 exclude: [
                     /node_modules/,
                     /__test__/,
                     /__stories__/,
                     /__mocks__/,
+                ],
+                use: [
+                    { loader: 'babel-loader' },
+                    { loader: 'ts-loader' },
+                    // {
+                    //     loader: 'babel-loader',
+                    //     options: {
+                    //         presets: [
+                    //             '@babel/preset-env',
+                    //             '@babel/preset-react',
+                    //             '@babel/preset-typescript',
+                    //             '@emotion/babel-preset-css-prop',
+                    //         ],
+                    //         plugins: [
+                    //             'emotion',
+                    //             '@babel/plugin-proposal-class-properties',
+                    //         ],
+                    //     },
+                    // },
                 ],
             },
             {
