@@ -125,7 +125,7 @@ const StyledButton = styled(Button)({
     margin: '5px',
     ':active': {
         [`${StyledSearchIcon}`]: {
-            fill: COLORS.white,
+            fill: COLORS.darkestBlue,
         },
     },
 });

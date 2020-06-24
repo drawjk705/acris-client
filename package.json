@@ -17,6 +17,8 @@
         "apollo-link-error": "^1.1.13",
         "apollo-link-http": "^1.5.17",
         "dotenv": "^8.2.0",
+        "emotion": "^10.0.27",
+        "emotion-theming": "^10.0.27",
         "express": "^4.17.1",
         "formik": "^2.1.4",
         "graphql": "^14.6.0",

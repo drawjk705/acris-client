@@ -2,14 +2,16 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Field, FormikErrors, FormikTouched } from 'formik';
 import { makeTransition } from '../../styles/makeTransition';
+import { COLORS } from '../../styles/colors';
+import { FONT } from '../../styles/fonts';
 
 export const Input = styled(Field)({
     fontSize: '15px',
     padding: '10px',
     borderRadius: '5px',
-    borderColor: 'transparent',
+    borderColor: COLORS.darkestBlue,
     ':focus, :active': {
-        borderColor: 'black',
+        borderColor: 'transparent',
         outline: 'transparent',
     },
     autocomplete: 'none',
@@ -51,5 +53,6 @@ const ErrorMessageWrapper = styled.span(
         ...makeTransition({
             transitionProperties: ['opacity', 'width', 'height'],
         }),
+        font: FONT.RobotoBold,
     })
 );
