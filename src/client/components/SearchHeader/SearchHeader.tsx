@@ -2,16 +2,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { AddressSearch } from './AddressSearch/AddressSearch';
 import { COLORS } from '../../styles/colors';
-
-enum SearchType {
-    // property
-    Address = 'Address',
-    BoroughBlockLot = 'Borough, Block, Lot',
-    // todo
-    // property range
-    // document
-    // person
-}
+import { SearchType } from './SearchType';
 
 export const SearchHeader: React.FC = () => {
     const [searchType, setSearchType] = useState(SearchType.Address);

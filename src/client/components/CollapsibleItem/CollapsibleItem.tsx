@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import ChevronDown from '../../assets/chevron-down.svg';
+import ChevronDown from '../../assets/chevron.svg';
 
 interface ICollapsibleItem {
     title: string | JSX.Element;
@@ -66,7 +66,6 @@ const TitleWrapper = styled.div({
 
 const StyledChevron = styled(ChevronDown)({
     marginLeft: 'auto',
-    width: '10px',
     opacity: '0.6',
     transition: 'transform 0.3s ease-in-out',
 });

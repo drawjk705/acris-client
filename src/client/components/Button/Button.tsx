@@ -18,19 +18,24 @@ export const Button: React.FC<IButton> = ({
 );
 
 const ButtonWrapper = styled.button({
+    display: 'flex',
+    flexDirection: 'row',
     fontSize: '15px',
     padding: '10px',
     borderRadius: '5px',
     borderColor: 'transparent',
-    backgroundColor: COLORS.red,
+    // backgroundColor: COLORS.red,
+    ':hover': {
+        cursor: 'pointer',
+    },
     ':focus, :active': {
         outline: 'transparent',
     },
     ':focus': {
-        borderColor: COLORS.darkestBlue,
+        // borderColor: COLORS.darkestBlue,
     },
     ':active': {
-        backgroundColor: COLORS.yellow,
+        // backgroundColor: COLORS.yellow,
     },
     ...makeTransition({
         transitionProperties: ['border-color', 'background-color'],
