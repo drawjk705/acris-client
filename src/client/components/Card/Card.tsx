@@ -19,7 +19,7 @@ const StyledCard = styled.div({
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: 'white',
-    boxShadow: `3px 3px 3px ${COLORS.dropShadowGrey}`,
+    boxShadow: `3px 3px 3px ${COLORS.darkestBlue}`,
     padding: '20px',
     borderRadius: '5px',
 });
@@ -28,5 +28,5 @@ const Header = styled.div({
     fontSize: '20px',
     fontWeight: 'bold',
     marginBottom: '5px',
-    borderBottom: `1px solid ${COLORS.dropShadowGrey}`,
+    borderBottom: `1px solid ${COLORS.darkestBlue}`,
 });

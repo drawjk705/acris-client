@@ -67,5 +67,5 @@ const PartiesSubHeader = styled.div({
     fontStyle: 'italic',
     fontWeight: 'bold',
     fontSize: '20px',
-    borderBottom: `1px solid ${COLORS.dropShadowGrey}`,
+    borderBottom: `1px solid ${COLORS.darkestBlue}`,
 });

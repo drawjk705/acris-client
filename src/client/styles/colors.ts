@@ -1,3 +1,8 @@
 export const COLORS = {
-    dropShadowGrey: '#9ea2a75e',
+    darkestBlue: '#0D3B66',
+    yellow: '#F4D35E',
+    orange: '#EE964B',
+    red: '#F95738',
+    grey: '#BFC0C0',
+    white: '#FFFFFF',
 };
