@@ -1,4 +1,6 @@
-export const mockTaxClassData = [
+import { Property_property_taxClassData } from '../__generated__/Property';
+
+export const mockTaxClassData: Property_property_taxClassData[] = [
     {
         assessmentAndExemptionValuations: {
             actual: {

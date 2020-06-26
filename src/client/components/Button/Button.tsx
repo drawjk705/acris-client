@@ -24,21 +24,16 @@ const ButtonWrapper = styled.button({
     padding: '10px',
     borderRadius: '5px',
     borderColor: 'transparent',
-    // backgroundColor: COLORS.red,
     ':hover': {
         cursor: 'pointer',
+        backgroundColor: COLORS.red,
+
+        '*': {
+            fill: COLORS.white,
+            color: COLORS.white,
+        },
     },
     ':focus, :active': {
         outline: 'transparent',
     },
-    ':focus': {
-        // borderColor: COLORS.darkestBlue,
-    },
-    ':active': {
-        // backgroundColor: COLORS.yellow,
-    },
-    ...makeTransition({
-        transitionProperties: ['border-color', 'background-color'],
-        transitionDuration: '0.3s',
-    }),
 });

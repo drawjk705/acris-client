@@ -22,7 +22,13 @@ export const Parties: React.FC<IParties> = ({
     partyTypes: { partyOneType, partyTwoType, partyThreeType },
 }) => {
     const partiesByType = useMemo(
-        () => groupBy(parties, { criterion: 'partyType' }),
+        () =>
+            Object.entries(groupBy(parties, { criterion: 'partyType' }))
+                .sort(
+                    ([partyType1, _], [partyType2, __]) =>
+                        Number(partyType1) - Number(partyType2)
+                )
+                .map(([_, partiesByType]) => partiesByType),
         [parties]
     );
 
@@ -36,10 +42,10 @@ export const Parties: React.FC<IParties> = ({
 
     return (
         <DocumentPartiesWrapper>
-            {partyTypes?.map((partyType, i) => {
+            {partiesByType.map((parties, i) => {
                 const PartyType: React.FC = () => (
                     <PartyTypeWrapper>
-                        {uppercaseFirstLetters(partyType)}
+                        {uppercaseFirstLetters(partyTypes[i])}
                     </PartyTypeWrapper>
                 );
 
@@ -49,7 +55,7 @@ export const Parties: React.FC<IParties> = ({
                         title={<PartyType />}
                         expandedHeightPx={60}
                     >
-                        {partiesByType[i + 1].map((party) => (
+                        {parties.map((party) => (
                             <StyledParty
                                 name={party.name}
                                 {...party.address}

@@ -1,4 +1,4 @@
-import { groupBy } from '../groupBy';
+import {} from '../groupBy';
 
 describe('groupBy', () => {
     it('groups correctly with prop selector', () => {
@@ -17,7 +17,7 @@ describe('groupBy', () => {
             },
         ];
 
-        const result = groupBy(objects, {
+        const result = objects.groupBy({
             criterion: 'age',
         });
 
@@ -51,7 +51,9 @@ describe('groupBy', () => {
             },
         ];
 
-        const result = groupBy(objects, { predicate: (obj) => obj.age === 10 });
+        const result = objects.groupBy({
+            predicate: (obj) => obj.age === 10,
+        });
 
         expect(result).toStrictEqual({
             true: [

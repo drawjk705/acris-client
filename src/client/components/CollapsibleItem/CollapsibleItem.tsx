@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
-import ChevronDown from '../../assets/chevron.svg';
+import ChevronDown from '../../assets/chevron-down.svg';
 
 interface ICollapsibleItem {
     title: string | JSX.Element;

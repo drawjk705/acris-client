@@ -1,4 +1,6 @@
-export const mockHousingMaintenanceCodeViolations = [
+import { Property_property_housingMaintenanceCodeViolations } from '../__generated__/Property';
+
+export const mockHousingMaintenanceCodeViolations: Property_property_housingMaintenanceCodeViolations[] = [
     {
         apartment: null,
         communityBoard: '7',
@@ -255,4 +257,4 @@ export const mockHousingMaintenanceCodeViolations = [
         story: '5',
         violationStatus: 'Open',
     },
-];
+] as Property_property_housingMaintenanceCodeViolations[];

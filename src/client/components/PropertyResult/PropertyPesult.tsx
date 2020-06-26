@@ -5,8 +5,9 @@ import {
 } from '../../__generated__/Property';
 import styled from '@emotion/styled';
 import { DocumentCard } from '../DocumentCard/DocumentCard';
+import { PropertyPreview_property } from '../../__generated__/PropertyPreview';
 
-export const PropertyCard: React.FC<Property_property> = (property) => (
+export const PropertyCard: React.FC<PropertyPreview_property> = (property) => (
     <PropertyWrapper>
         <PropertyAddress>{`${property.streetNumber} ${property.streetName}`}</PropertyAddress>
         <BoroughBlockLotInfo>

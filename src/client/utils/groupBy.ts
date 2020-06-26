@@ -1,33 +1,46 @@
-type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
-type XOR<T, U> = T | U extends object
-    ? (Without<T, U> & U) | (Without<U, T> & T)
-    : T | U;
+export {};
 
-type TObject = {
-    [key in string | number]: any;
+declare global {
+    interface Array<T> {
+        groupBy: <S extends withCriterion | withPredicate<T>>(
+            criterionOrPredicate: T extends Object
+                ? S extends withCriterion
+                    ? withCriterion
+                    : withPredicate<T>
+                : withPredicate<T>
+        ) => TGrouping<T>;
+    }
+}
+
+type withCriterion = {
+    criterion: string | number;
+    predicate?: never;
 };
 
-type TCriterion<T> = {
-    criterion: {
-        [K in keyof T]: T[K] extends never ? never : K;
-    }[keyof T];
+type withPredicate<T> = {
+    criterion?: never;
+    predicate: (obj: T) => boolean;
 };
 
 type TGrouping<T> = {
     [key in any]: T[];
 };
 
-type TPredicate<T> = {
-    predicate: (obj: T) => boolean;
-};
+Array.prototype.push;
 
-export const groupBy = <T extends TObject>(
-    objects: T[],
-    criterionOrPredicate: XOR<TCriterion<T>, TPredicate<T>>
-): TGrouping<T> => {
-    const { criterion, predicate } = criterionOrPredicate as any;
+Array.prototype.groupBy = function<
+    T,
+    S extends withCriterion | withPredicate<T>
+>(
+    criterionOrPredicate: T extends Object
+        ? S extends withCriterion
+            ? withCriterion
+            : withPredicate<T>
+        : withPredicate<T>
+): TGrouping<T> {
+    const { criterion, predicate } = criterionOrPredicate;
 
-    return objects.reduce((acc: TGrouping<T>, obj) => {
+    return this.reduce((acc: TGrouping<T>, obj) => {
         if (criterion) {
             if ((obj as Object).hasOwnProperty(criterion)) {
                 const value = obj[criterion];
@@ -38,14 +51,16 @@ export const groupBy = <T extends TObject>(
                     acc[value] = [obj];
                 }
             }
-        } else {
-            const predicateVal = predicate(obj);
+        } else if (predicate) {
+            const predicateVal = predicate(obj).toString();
 
             if ((acc as Object).hasOwnProperty(predicateVal)) {
                 acc[predicateVal] = [...acc[predicateVal], obj];
             } else {
                 acc[predicateVal] = [obj];
             }
+        } else {
+            obj;
         }
 
         return acc;

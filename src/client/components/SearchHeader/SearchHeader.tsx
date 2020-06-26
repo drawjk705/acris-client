@@ -3,63 +3,67 @@ import styled from '@emotion/styled';
 import { AddressSearch } from './AddressSearch/AddressSearch';
 import { COLORS } from '../../styles/colors';
 import { SearchType } from './SearchType';
+import { Dropdown } from '../Dropdown/Dropdown';
+import { BoroughBlockLotSearch } from './BoroughBlockLotSearch/BoroughBlockLotSearch';
 
 export const SearchHeader: React.FC = () => {
     const [searchType, setSearchType] = useState(SearchType.Address);
 
-    const searchTabs = (
-        <SearchTabWrapper>
-            {Object.entries(SearchType).map(([searchType, name]) => (
-                <SearchTab
-                    key={name}
-                    onClick={() => setSearchType(searchType as SearchType)}
-                >
-                    {name}
-                </SearchTab>
-            ))}
-        </SearchTabWrapper>
-    );
-
     return (
-        <>
-            <SearchHeaderWrapper>
-                {searchTabs}
-                <SearchBarWrapper>
-                    <AddressSearchSection searchType={searchType} />
-                </SearchBarWrapper>
-            </SearchHeaderWrapper>
-        </>
+        <SearchHeaderWrapper>
+            <DropdownWrapper>
+                <StyledDropdown
+                    initialCurrentValue={searchType}
+                    options={Object.values(SearchType)}
+                    onSelectOption={setSearchType}
+                />
+            </DropdownWrapper>
+            <SearchBarWrapper>
+                <AddressSearchSection searchType={searchType} />
+                <BoroughBlockLotSearchSection searchType={searchType} />
+            </SearchBarWrapper>
+        </SearchHeaderWrapper>
     );
 };
 
 interface ISearchSection {
-    searchType: SearchType;
+    searchType: string;
 }
 
 const AddressSearchSection: React.FC<ISearchSection> = ({ searchType }) =>
     searchType === SearchType.Address ? <AddressSearch /> : null;
 
+const BoroughBlockLotSearchSection: React.FC<ISearchSection> = ({
+    searchType,
+}) =>
+    searchType === SearchType.BoroughBlockLot ? (
+        <BoroughBlockLotSearch />
+    ) : null;
+
 const SearchHeaderWrapper = styled.div({
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
     width: '100%',
     backgroundColor: COLORS.darkestBlue,
+    padding: '15px',
+    position: 'fixed',
+    top: '0px',
+    left: '0px',
+    zIndex: 99,
 });
 
-const SearchTabWrapper = styled.div({
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: '10px',
+const DropdownWrapper = styled.div({
+    margin: 'auto',
+    width: '200px',
+});
+
+const StyledDropdown = styled(Dropdown)({
+    width: '100%',
 });
 
 const SearchBarWrapper = styled.div({
     display: 'flex',
     width: '100%',
-});
-
-const SearchTab = styled.div({
-    backgroundColor: COLORS.red,
-    color: COLORS.white,
-    border: `3px solid ${COLORS.white}`,
-    padding: '10px',
+    margin: 'auto',
+    marginLeft: '40px',
 });

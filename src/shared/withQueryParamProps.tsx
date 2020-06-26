@@ -1,14 +1,20 @@
 import React from 'react';
-import { useLocation } from 'react-router';
+import { useLocation, useRouteMatch } from 'react-router';
 
-export const withQueryParamProps = (Component: React.FC<any>) => (
+export const withQueryParamProps = (path: string, Component: React.FC<any>) => (
     props: any
 ) => {
     const queryParams: { [key: string]: string | number } = {};
+
+    const match = useRouteMatch({
+        path,
+        strict: true,
+        sensitive: true,
+    });
 
     new URLSearchParams(useLocation().search).forEach((value, key) => {
         queryParams[key] = value;
     });
 
-    return <Component {...props} {...queryParams} />;
+    return <Component {...match?.params} {...props} {...queryParams} />;
 };

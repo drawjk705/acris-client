@@ -2,12 +2,14 @@ import { mockDocument } from './mockDocument';
 import { mockHousingMaintenanceCodeViolations } from './mockHousingMaintenanceCodeViolations';
 import { mockTaxClassData } from './mockTaxClassData';
 import { mockValuationAndAssessmentData } from './mockValuationAndAssessmentData';
+import { Borough } from '../__generated__/globalTypes';
+import { Property_property } from '../__generated__/Property';
 
-export const mockProperty = {
+export const mockProperty: Property_property = {
     bble: '1012320036',
     block: 1232,
     lot: 36,
-    borough: 'MANHATTAN',
+    borough: Borough.MANHATTAN,
     document: mockDocument,
     housingMaintenanceCodeViolations: mockHousingMaintenanceCodeViolations,
     propertyType: {
@@ -15,7 +17,6 @@ export const mockProperty = {
         propertyType: 'AP',
         recordType: 'G',
     },
-    registrationId: 102033,
     streetNumber: '200',
     streetName: 'WEST 85TH STREET',
     taxClassData: mockTaxClassData,

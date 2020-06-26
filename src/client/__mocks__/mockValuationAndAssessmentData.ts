@@ -1,4 +1,6 @@
-export const mockValuationAndAssessmentData = [
+import { Property_property_valuationAndAssessmentData } from '../__generated__/Property';
+
+export const mockValuationAndAssessmentData: Property_property_valuationAndAssessmentData[] = [
     {
         actualExemptLandTotal: 0,
         actualExemptLandValue: 0,

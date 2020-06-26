@@ -4,22 +4,42 @@ import {
     assessmentAndExemptionValuationFragment,
 } from './fragments';
 
-export const GET_PROPERTY = gql`
-    query Property(
+export const GET_PROPERTY_PREVIEW = gql`
+    query PropertyPreview(
         $streetNumber: String
         $streetName: String
-        $boroughBlockLotInput: BoroughBlockLotInput
+        $borough: Borough
+        $block: Int
+        $lot: Int
     ) {
         property(
             streetNumber: $streetNumber
             streetName: $streetName
-            boroughBlockLot: $boroughBlockLotInput
+            boroughBlockLot: { borough: $borough, block: $block, lot: $lot }
         ) {
             bble
             borough
             block
             lot
-            registrationId
+            streetNumber
+            streetName
+            document {
+                amount
+                crfn
+                date
+                id
+            }
+        }
+    }
+`;
+
+export const GET_PROPERTY = gql`
+    query Property($documentId: String) {
+        property(documentId: $documentId) {
+            bble
+            borough
+            block
+            lot
             streetNumber
             streetName
             unit
@@ -150,16 +170,24 @@ export const GET_PROPERTY = gql`
                 transitionalLandValue
                 transitionalTotalValue
             }
+            housingMaintenanceCodeViolations {
+                apartment
+                story
+                inspectionDate
+                originalCertifyByDate
+                originalCorrectByDate
+                newCertifyByDate
+                newCorrectByDate
+                orderNumber
+                novDescription
+                novIssuedDate
+                currentStatus
+                communityBoard
+                violationStatus
+            }
         }
     }
 
     ${addressFragment}
     ${assessmentAndExemptionValuationFragment}
 `;
-
-// valuationAndAssessmentData {
-
-// }
-// housingMaintenanceCodeViolations {
-
-// }

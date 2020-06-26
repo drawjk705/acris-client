@@ -1,5 +1,4 @@
 import React from 'react';
-import { SerializedStyles } from '@emotion/core';
 import styled from '@emotion/styled';
 import { COLORS } from '../../styles/colors';
 
@@ -19,7 +18,7 @@ const StyledCard = styled.div({
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: 'white',
-    boxShadow: `3px 3px 3px ${COLORS.darkestBlue}`,
+    boxShadow: '0.3em 0.3em 2em rgba(0,0,0,0.3)',
     padding: '20px',
     borderRadius: '5px',
 });
