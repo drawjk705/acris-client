@@ -1,15 +1,3 @@
-export {};
-
-declare global {
-    interface String {
-        uppercaseFirstLetters: (
-            delimiter?: string,
-            uppercaseStopWords?: string[],
-            lowercaseStopWords?: string[]
-        ) => string;
-    }
-}
-
 const defaultLowercaseStopWords = ['a', 'the', 'of', 'or', 'and'];
 const defaultUppercaseStopWords = ['LLC'];
 
@@ -20,11 +8,12 @@ const defaultUppercaseStopWords = ['LLC'];
  * @param uppercaseStopWords - list of words to keep upper-cased
  * @param lowercaseStopWords - list of words to keep all lower-cased
  */
-String.prototype.uppercaseFirstLetters = function(
+export const uppercaseFirstLetters = (
+    str: string | null | undefined,
     delimiter = ' ',
     uppercaseStopWords: string[] = [],
     lowercaseStopWords: string[] = []
-) {
+) => {
     const allLowercaseStopWords = [
         ...defaultLowercaseStopWords,
         ...lowercaseStopWords,
@@ -36,18 +25,16 @@ String.prototype.uppercaseFirstLetters = function(
     ];
 
     return (
-        this &&
-        this.split(delimiter)
+        str &&
+        str
+            .split(delimiter)
             .map((split) =>
                 allUppercaseStopWords.includes(split)
                     ? split
                     : split.toLowerCase()
             )
             .map((split, i) => {
-                if (
-                    (i > 0 && allLowercaseStopWords.includes(split)) ||
-                    !split.length
-                ) {
+                if (i > 0 && allLowercaseStopWords.includes(split)) {
                     return split;
                 }
                 return `${split[0].toUpperCase()}${split.slice(1)}`;

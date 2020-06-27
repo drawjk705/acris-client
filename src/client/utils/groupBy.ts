@@ -1,17 +1,3 @@
-export {};
-
-declare global {
-    interface Array<T> {
-        groupBy: <S extends withCriterion | withPredicate<T>>(
-            criterionOrPredicate: T extends Object
-                ? S extends withCriterion
-                    ? withCriterion
-                    : withPredicate<T>
-                : withPredicate<T>
-        ) => TGrouping<T>;
-    }
-}
-
 type withCriterion = {
     criterion: string | number;
     predicate?: never;
@@ -26,24 +12,26 @@ type TGrouping<T> = {
     [key in any]: T[];
 };
 
-Array.prototype.push;
+type TObject = {
+    [key in string | number]: any;
+};
 
-Array.prototype.groupBy = function<
-    T,
-    S extends withCriterion | withPredicate<T>
->(
-    criterionOrPredicate: T extends Object
+export const groupBy = <T, S extends withCriterion | withPredicate<T>>(
+    items: T[],
+    criterionOrPredicate: T extends { [key: string]: any }
         ? S extends withCriterion
             ? withCriterion
             : withPredicate<T>
         : withPredicate<T>
-): TGrouping<T> {
+): TGrouping<T> => {
     const { criterion, predicate } = criterionOrPredicate;
 
-    return this.reduce((acc: TGrouping<T>, obj) => {
+    return items.reduce((acc: TGrouping<T>, obj) => {
         if (criterion) {
-            if ((obj as Object).hasOwnProperty(criterion)) {
-                const value = obj[criterion];
+            const objAsObject = obj as TObject;
+
+            if (objAsObject.hasOwnProperty(criterion)) {
+                const value = objAsObject[criterion];
 
                 if ((acc as Object).hasOwnProperty(value)) {
                     acc[value] = [...acc[value], obj];
