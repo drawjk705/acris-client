@@ -1,0 +1,138 @@
+import { Property_property_documents } from '../__generated__/Property';
+
+export const mockDocuments: Property_property_documents[] = [
+    {
+        amount: '0',
+        crfn: '2004000675168',
+        dateOnDocument: '2004-07-22T04:00:00.000Z',
+        legalDateRecorded: '2004-11-01T05:00:00.000Z',
+        dateModified: '2004-11-01T05:00:00.000Z',
+        goodThroughDate: '2015-07-31T04:00:00.000Z',
+        id: '2004072201776001',
+        parties: [
+            {
+                name: '200 WEST 85TH STREET ASSOCIATES',
+                partyType: '1',
+                documentId: '2004072201776001',
+                address: {
+                    addressLineOne: '163 WEST 74TH STREET',
+                    addressLineTwo: null,
+                    city: 'NEW YORK',
+                    state: 'NY',
+                    zipCode: '10023',
+                },
+            },
+            {
+                name: '200 WEST 85TH STREET, LLC',
+                partyType: '2',
+                documentId: '2004072201776001',
+                address: {
+                    addressLineOne: '163 WEST 74TH STREET',
+                    addressLineTwo: null,
+                    city: 'NEW YORK',
+                    state: 'NY',
+                    zipCode: '10023',
+                },
+            },
+        ],
+        type: {
+            typeId: 'DEEDO',
+            documentType: 'DEED, OTHER',
+            classCodeDescription: 'DEEDS AND OTHER CONVEYANCES',
+            partyOneType: 'GRANTOR',
+            partyTwoType: 'GRANTEE',
+            partyThreeType: null,
+        },
+    },
+    {
+        amount: '0',
+        crfn: '2017000254379',
+        dateOnDocument: '2017-06-29T04:00:00.000Z',
+        legalDateRecorded: '2017-07-11T04:00:00.000Z',
+        dateModified: '2017-07-11T04:00:00.000Z',
+        goodThroughDate: '2017-07-31T04:00:00.000Z',
+        id: '2017070600607001',
+        parties: [
+            {
+                name: '200 WEST 85TH STREET ASSOCIATES',
+                partyType: '1',
+                documentId: '2017070600607001',
+                address: {
+                    addressLineOne: null,
+                    addressLineTwo: null,
+                    city: null,
+                    state: null,
+                    zipCode: null,
+                },
+            },
+            {
+                name: 'BRUSCO WEST 73RD STREET ASSOCIATES',
+                partyType: '1',
+                documentId: '2017070600607001',
+                address: {
+                    addressLineOne: null,
+                    addressLineTwo: null,
+                    city: null,
+                    state: null,
+                    zipCode: null,
+                },
+            },
+            {
+                name: 'WEST 73 ST, LLC',
+                partyType: '1',
+                documentId: '2017070600607001',
+                address: {
+                    addressLineOne: null,
+                    addressLineTwo: null,
+                    city: null,
+                    state: null,
+                    zipCode: null,
+                },
+            },
+            {
+                name: 'M&T REAL ESTATE TRUST',
+                partyType: '2',
+                documentId: '2017070600607001',
+                address: {
+                    addressLineOne: null,
+                    addressLineTwo: null,
+                    city: null,
+                    state: null,
+                    zipCode: null,
+                },
+            },
+            {
+                name: 'NICOLA S. BRUSCO AND MARIA BRUSCO',
+                partyType: '2',
+                documentId: '2017070600607001',
+                address: {
+                    addressLineOne: null,
+                    addressLineTwo: null,
+                    city: null,
+                    state: null,
+                    zipCode: null,
+                },
+            },
+            {
+                name: 'NICOLA S. BRUSCO AND MARIA BRUSCO',
+                partyType: '2',
+                documentId: '2017070600607001',
+                address: {
+                    addressLineOne: null,
+                    addressLineTwo: null,
+                    city: null,
+                    state: null,
+                    zipCode: null,
+                },
+            },
+        ],
+        type: {
+            typeId: 'SAT',
+            documentType: 'SATISFACTION OF MORTGAGE',
+            classCodeDescription: 'MORTGAGES & INSTRUMENTS',
+            partyOneType: 'MORTGAGER/BORROWER',
+            partyTwoType: 'MORTGAGEE/LENDER',
+            partyThreeType: null,
+        },
+    },
+];

@@ -13,7 +13,7 @@ export const uppercaseFirstLetters = (
     delimiter = ' ',
     uppercaseStopWords: string[] = [],
     lowercaseStopWords: string[] = []
-) => {
+): string => {
     const allLowercaseStopWords = [
         ...defaultLowercaseStopWords,
         ...lowercaseStopWords,
@@ -24,21 +24,23 @@ export const uppercaseFirstLetters = (
         ...uppercaseStopWords,
     ];
 
-    return (
-        str &&
-        str
-            .split(delimiter)
-            .map((split) =>
-                allUppercaseStopWords.includes(split)
-                    ? split
-                    : split.toLowerCase()
-            )
-            .map((split, i) => {
-                if (i > 0 && allLowercaseStopWords.includes(split)) {
-                    return split;
-                }
-                return `${split[0].toUpperCase()}${split.slice(1)}`;
-            })
-            .join(delimiter)
-    );
+    return str
+        ? str
+              .split(delimiter)
+              .map((split) =>
+                  allUppercaseStopWords.includes(split)
+                      ? split
+                      : split.toLowerCase()
+              )
+              .map((split, i) => {
+                  if (
+                      (i > 0 && allLowercaseStopWords.includes(split)) ||
+                      !split
+                  ) {
+                      return split;
+                  }
+                  return `${split[0].toUpperCase()}${split.slice(1)}`;
+              })
+              .join(delimiter)
+        : '';
 };

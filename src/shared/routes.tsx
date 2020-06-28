@@ -1,5 +1,6 @@
-import { PropertyPreviews } from './Pages/PropertyPreviews';
 import { Home } from './Pages/Home';
+import { PropertyPreviewsPage } from './Pages/PropertyPreviewsPage';
+import { PropertyResultPage } from './Pages/PropertyResultPage';
 
 export interface IRoute {
     path: string;
@@ -16,11 +17,11 @@ export const routes: Array<IRoute> = [
     {
         path: '/property-previews',
         exact: true,
-        component: PropertyPreviews,
+        component: PropertyPreviewsPage,
     },
     {
-        path: '/property/:id',
+        path: '/property',
         exact: true,
-        component: PropertyPreviews,
+        component: PropertyResultPage,
     },
 ];

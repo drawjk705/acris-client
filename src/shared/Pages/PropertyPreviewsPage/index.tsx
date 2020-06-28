@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { GET_PROPERTY } from '../../../client/queries/getProperty';
+import styled from '@emotion/styled';
+import { GET_PROPERTY_PREVIEW } from '../../../client/queries/getProperty';
 import {
     PropertyPreview,
     PropertyPreviewVariables,
@@ -31,11 +32,13 @@ const transformProps = ({
     lot: Number(lot),
 });
 
-export const PropertyPreviews: React.FC<PropertyPreview> = (props) => {
+export const PropertyPreviewsPage: React.FC<PropertyPreviewVariables> = (
+    props
+) => {
     const { loading, error, data } = useQuery<
         PropertyPreview,
         PropertyPreviewVariables
-    >(GET_PROPERTY, {
+    >(GET_PROPERTY_PREVIEW, {
         variables: transformProps(props as PropertyPreviewVariables),
         skip: !receivedValidInput(props as PropertyPreviewVariables),
     });
@@ -54,7 +57,7 @@ export const PropertyPreviews: React.FC<PropertyPreview> = (props) => {
                 {data.property
                     .filter((property) => !!property)
                     .map((property, i) => (
-                        <PropertyPreviewResult
+                        <StyledPropertyPreviewResult
                             key={i}
                             {...(property as PropertyPreview_property)}
                         />
@@ -65,3 +68,7 @@ export const PropertyPreviews: React.FC<PropertyPreview> = (props) => {
 
     return <div>nothing</div>;
 };
+
+const StyledPropertyPreviewResult = styled(PropertyPreviewResult)({
+    margin: '35px',
+});

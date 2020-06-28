@@ -23,19 +23,35 @@ export const GET_PROPERTY_PREVIEW = gql`
             lot
             streetNumber
             streetName
-            document {
-                amount
-                crfn
-                date
+            propertyType {
+                description
+            }
+            documents {
+                legalDateRecorded
                 id
+                type {
+                    classCodeDescription
+                }
             }
         }
     }
 `;
 
 export const GET_PROPERTY = gql`
-    query Property($documentId: String) {
-        property(documentId: $documentId) {
+    query Property(
+        $streetNumber: String
+        $streetName: String
+        $borough: Borough
+        $block: Int
+        $lot: Int
+        $documentId: String
+    ) {
+        property(
+            streetNumber: $streetNumber
+            streetName: $streetName
+            documentId: $documentId
+            boroughBlockLot: { borough: $borough, block: $block, lot: $lot }
+        ) {
             bble
             borough
             block
@@ -48,10 +64,13 @@ export const GET_PROPERTY = gql`
                 propertyType
                 recordType
             }
-            document {
+            documents {
                 amount
                 crfn
-                date
+                dateOnDocument
+                legalDateRecorded
+                dateModified
+                goodThroughDate
                 id
                 parties {
                     name

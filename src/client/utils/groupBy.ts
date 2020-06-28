@@ -1,5 +1,5 @@
-type withCriterion = {
-    criterion: string | number;
+type withCriterion<T> = {
+    criterion: keyof T;
     predicate?: never;
 };
 
@@ -12,15 +12,15 @@ type TGrouping<T> = {
     [key in any]: T[];
 };
 
-type TObject = {
-    [key in string | number]: any;
+type TObject<T> = {
+    [key in keyof T]: any;
 };
 
-export const groupBy = <T, S extends withCriterion | withPredicate<T>>(
+export const groupBy = <T, S extends withCriterion<T> | withPredicate<T>>(
     items: T[],
     criterionOrPredicate: T extends { [key: string]: any }
-        ? S extends withCriterion
-            ? withCriterion
+        ? S extends withCriterion<T>
+            ? withCriterion<T>
             : withPredicate<T>
         : withPredicate<T>
 ): TGrouping<T> => {
@@ -28,7 +28,7 @@ export const groupBy = <T, S extends withCriterion | withPredicate<T>>(
 
     return items.reduce((acc: TGrouping<T>, obj) => {
         if (criterion) {
-            const objAsObject = obj as TObject;
+            const objAsObject = obj as TObject<T>;
 
             if (objAsObject.hasOwnProperty(criterion)) {
                 const value = objAsObject[criterion];

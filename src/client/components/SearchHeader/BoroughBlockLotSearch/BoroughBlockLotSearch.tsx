@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik';
 import { Borough } from '../../../__generated__/globalTypes';
 import SearchIcon from '../../../assets/search-icon.svg';
 import { uppercaseFirstLetters } from '../../../utils/uppercaseFirstLetters';
-import { Dropdown, FormikDropdown } from '../../Dropdown/Dropdown';
+import { FormikDropdown } from '../../Dropdown/Dropdown';
 import { Button } from '../../Button/Button';
 import { Input } from '../../Input/Input';
 import { COLORS } from '../../../styles/colors';
@@ -22,7 +22,7 @@ export const BoroughBlockLotSearch: React.FC = () => {
         const queryString = `borough=${parametrizeBoroughString(
             borough
         )}&block=${block}&lot=${lot}`;
-        window.location.replace(`/property?${queryString}`);
+        window.location.replace(`/property-previews?${queryString}`);
     };
 
     const initialValues = {

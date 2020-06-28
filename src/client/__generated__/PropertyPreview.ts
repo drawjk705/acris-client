@@ -9,11 +9,18 @@ import { Borough } from "./globalTypes";
 // GraphQL query operation: PropertyPreview
 // ====================================================
 
-export interface PropertyPreview_property_document {
-  amount: string | null;
-  crfn: string | null;
-  date: any | null;
+export interface PropertyPreview_property_propertyType {
+  description: string | null;
+}
+
+export interface PropertyPreview_property_documents_type {
+  classCodeDescription: string | null;
+}
+
+export interface PropertyPreview_property_documents {
+  legalDateRecorded: any | null;
   id: string;
+  type: PropertyPreview_property_documents_type;
 }
 
 export interface PropertyPreview_property {
@@ -23,7 +30,8 @@ export interface PropertyPreview_property {
   lot: number;
   streetNumber: string | null;
   streetName: string | null;
-  document: PropertyPreview_property_document | null;
+  propertyType: PropertyPreview_property_propertyType | null;
+  documents: (PropertyPreview_property_documents | null)[];
 }
 
 export interface PropertyPreview {

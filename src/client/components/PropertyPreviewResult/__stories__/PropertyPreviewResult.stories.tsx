@@ -1,12 +1,18 @@
 import React from 'react';
-import { mockProperty } from '../../../__mocks__/mockProperty';
 import { PropertyPreviewResult } from '..';
-import { Property_property } from '../../../__generated__/Property';
+import { mockPropertyPreview } from '../../../__mocks__/mockPropertyPreview';
+import { PropertyPreview_property } from '../../../__generated__/PropertyPreview';
 
 export default { title: 'Components/PropertyPreviewResult' };
 
-const defaultProps: Property_property = mockProperty;
+const defaultProps: PropertyPreview_property = mockPropertyPreview;
 
-export const propertyPreviewResult = () => (
-    <PropertyPreviewResult {...defaultProps} />
+export const withAddress = () => <PropertyPreviewResult {...defaultProps} />;
+
+export const withoutAddress = () => (
+    <PropertyPreviewResult
+        {...defaultProps}
+        streetNumber={null}
+        streetName={null}
+    />
 );

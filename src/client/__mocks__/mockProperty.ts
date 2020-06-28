@@ -1,4 +1,4 @@
-import { mockDocument } from './mockDocument';
+import { mockDocuments } from './mockDocuments';
 import { mockHousingMaintenanceCodeViolations } from './mockHousingMaintenanceCodeViolations';
 import { mockTaxClassData } from './mockTaxClassData';
 import { mockValuationAndAssessmentData } from './mockValuationAndAssessmentData';
@@ -10,7 +10,7 @@ export const mockProperty: Property_property = {
     block: 1232,
     lot: 36,
     borough: Borough.MANHATTAN,
-    document: mockDocument,
+    documents: mockDocuments,
     housingMaintenanceCodeViolations: mockHousingMaintenanceCodeViolations,
     propertyType: {
         description: 'APARTMENT BUILDING',
