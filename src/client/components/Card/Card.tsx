@@ -18,7 +18,7 @@ const StyledCard = styled.div({
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: 'white',
-    boxShadow: '0.3em 0.3em 2em rgba(0,0,0,0.3)',
+    boxShadow: '0.3em 0.3em 1em rgba(0,0,0,0.3)',
     padding: '20px',
     borderRadius: '5px',
 });

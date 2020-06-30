@@ -378,6 +378,7 @@ export interface Property_property_taxClassData_dimensions {
 }
 
 export interface Property_property_taxClassData {
+  year: string | null;
   buildingConstructionYear: string | null;
   coopApartmentCount: number | null;
   coopIdNumber: number | null;

@@ -11,18 +11,17 @@ export interface ITitleAndContent extends IClassName {
     transformContent?: (content: any) => TContent;
 }
 
-export const TitleAndContent: React.FC<ITitleAndContent> = ({
-    title,
-    content,
-    transformContent,
-    className,
-}) => (
+export const TitleAndContent: React.FC<ITitleAndContent> & {
+    TitleSection: React.ReactNode;
+    Content: React.ReactNode;
+} = ({ title, content, transformContent, className }) => (
     <TitleAndContentWrapper className={className}>
-        <TitleSection className={className}>
+        <TitleSection>
             <TitleBold>{title}</TitleBold>:
         </TitleSection>
-
-        {transformContent ? transformContent(content) : content}
+        <Content>
+            {transformContent ? transformContent(content) : content}
+        </Content>
     </TitleAndContentWrapper>
 );
 
@@ -55,4 +54,7 @@ const TitleBold = styled.span({
     font: FONT.RobotoBold,
 });
 
-export { TitleSection, TitleAndContentWrapper };
+const Content = styled.span({});
+
+TitleAndContent.TitleSection = TitleSection;
+TitleAndContent.Content = Content;

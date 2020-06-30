@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
 import { uppercaseFirstLetters } from '../../../../utils/uppercaseFirstLetters';
-import { TitleAndContent, TitleSection } from '../../../TitleAndContent';
+import { TitleAndContent } from '../../../TitleAndContent';
 
 interface IPartySection {
     className?: string;
@@ -113,7 +113,7 @@ const NoContentSection = styled.div({
 const AddressLineWrapper = styled.div({});
 
 const StyledTitleAndContent = styled(TitleAndContent)({
-    [`${TitleSection}`]: {
+    [`${TitleAndContent.TitleSection}`]: {
         width: '60px',
     },
 });

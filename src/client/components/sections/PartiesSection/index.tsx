@@ -44,25 +44,24 @@ export const PartiesSection: React.FC<IPartiesSection> = ({
     return (
         <PartiesSectionWrapper className={className}>
             <PartiesSectionTitleWrapper>Parties</PartiesSectionTitleWrapper>
-            {partiesByTypes.map((parties, i) => {
+            {partiesByTypes.map((parties, partyTypeIndex) => {
                 const PartyType: React.FC = () => (
                     <PartyTypeWrapper>
-                        {uppercaseFirstLetters(partyTypes[i])}
+                        {uppercaseFirstLetters(partyTypes[partyTypeIndex])}
                     </PartyTypeWrapper>
                 );
 
                 return (
                     <StyledCollapsibleItem
-                        key={i}
+                        key={partyTypeIndex}
                         title={<PartyType />}
-                        expandedHeightPx={60}
                     >
-                        <PartiesByTypeSection key={i}>
-                            {parties.map((party) => (
+                        <PartiesByTypeSection>
+                            {parties.map((party, partyIndex) => (
                                 <StyledPartySection
                                     name={party.name}
                                     {...party.address}
-                                    key={i}
+                                    key={partyIndex}
                                 />
                             ))}
                         </PartiesByTypeSection>

@@ -12,6 +12,10 @@ import {
 import { mockProperty } from '../../../__mocks__/mockProperty';
 import { BoroughBlockLotSection } from '../BoroughBlockLotSection';
 import { DocumentSection } from '../DocumentSection';
+import { HousingMaintenanceCodeViolationsSection } from '../HousingMaintenanceCodeViolationsSection';
+import { mockHousingMaintenanceCodeViolations } from '../../../__mocks__/mockHousingMaintenanceCodeViolations';
+import { TaxClassDataSection } from '../TaxClassDataSection';
+import { mockTaxClassData } from '../../../__mocks__/mockTaxClassData';
 
 export default { title: 'Components/Sections' };
 
@@ -44,3 +48,13 @@ const partiesProps = {
 };
 
 export const partiesSection = () => <PartiesSection {...partiesProps} />;
+
+export const housingMaintenanceCodeViolations = () => (
+    <HousingMaintenanceCodeViolationsSection
+        violations={...mockHousingMaintenanceCodeViolations}
+    />
+);
+
+export const taxClassDataSection = () => (
+    <TaxClassDataSection taxClassData={mockTaxClassData} />
+);

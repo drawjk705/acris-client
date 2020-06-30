@@ -203,6 +203,7 @@ export const mockTaxClassData: Property_property_taxClassData[] = [
         hasExtension: false,
         storyCount: 6,
         unitCount: 26,
+        year: '2021',
         zoningCode: 'C2-7A',
     },
     {
@@ -407,6 +408,7 @@ export const mockTaxClassData: Property_property_taxClassData[] = [
         hasExtension: false,
         storyCount: 6,
         unitCount: 26,
+        year: '2020',
         zoningCode: 'C2-7A',
     },
 ];

@@ -90,6 +90,7 @@ export const GET_PROPERTY = gql`
                 }
             }
             taxClassData {
+                year
                 buildingConstructionYear
                 coopApartmentCount
                 coopIdNumber

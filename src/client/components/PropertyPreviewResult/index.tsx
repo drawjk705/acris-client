@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import styled from '@emotion/styled';
 import { PropertyPreview_property } from '../../__generated__/PropertyPreview';
 import { Card } from '../Card/Card';
@@ -11,6 +11,7 @@ import {
     Property_property_documents,
     Property_property_propertyType,
 } from '../../__generated__/Property';
+import { Link } from 'react-router-dom';
 
 export const PropertyPreviewResult: React.FC<PropertyPreview_property &
     IClassName> = ({
@@ -26,12 +27,12 @@ export const PropertyPreviewResult: React.FC<PropertyPreview_property &
 }) => {
     const hasAddress = !!streetNumber && !!streetName;
 
-    const onCLickChevron = useCallback(() => {
+    const chevronLink = useMemo(() => {
         const queryString = hasAddress
             ? `streetNumber=${streetNumber}&streetName=${streetName}`
             : `borough=${borough}&block=${block}&lot=${lot}&documentId=${documents[0]?.id}`;
 
-        window.location.assign(`/property?${queryString}`);
+        return `/property?${queryString}`;
     }, [streetName, streetNumber, documents, hasAddress]);
 
     return (
@@ -52,7 +53,9 @@ export const PropertyPreviewResult: React.FC<PropertyPreview_property &
                 )}
                 <BoroughBlockLotSection {...{ borough, block, lot, bble }} />
             </DataWrapper>
-            <StyledChevronRight onClick={onCLickChevron} />
+            <StyledLink to={chevronLink}>
+                <StyledChevronRight />
+            </StyledLink>
         </StyledCard>
     );
 };
@@ -71,6 +74,9 @@ const StyledChevronRight = styled(ChevronRight)({
     ':hover': {
         cursor: 'pointer',
     },
+});
+
+const StyledLink = styled(Link)({
     margin: 'auto',
     marginRight: '0px',
 });

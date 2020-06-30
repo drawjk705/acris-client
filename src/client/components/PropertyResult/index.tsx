@@ -1,6 +1,10 @@
 import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
-import { Property_property } from '../../__generated__/Property';
+import {
+    Property_property,
+    Property_property_housingMaintenanceCodeViolations,
+    Property_property_taxClassData,
+} from '../../__generated__/Property';
 import {
     AddressAndTypeSection,
     SectionTitleWrapper,
@@ -10,9 +14,13 @@ import { DocumentSection } from '../sections/DocumentSection';
 import { FONT } from '../../styles/fonts';
 import { COLORS } from '../../styles/colors';
 import { Card } from '../Card/Card';
+import { HousingMaintenanceCodeViolationsSection } from '../sections/HousingMaintenanceCodeViolationsSection';
+import { TaxClassDataSection } from '../sections/TaxClassDataSection';
 
 export const PropertyResult: React.FC<Property_property> = ({
     documents,
+    housingMaintenanceCodeViolations,
+    taxClassData,
     ...props
 }) => {
     const sortedDocuments = useMemo(
@@ -37,15 +45,38 @@ export const PropertyResult: React.FC<Property_property> = ({
                 {sortedDocuments.map(
                     (document) =>
                         document && (
-                            <StyledCard>
+                            <StyledCard key={document.id}>
                                 <DocumentSection
-                                    key={document?.id}
+                                    key={document.id}
                                     document={document}
                                 />
                             </StyledCard>
                         )
                 )}
             </Section>
+            {housingMaintenanceCodeViolations &&
+                housingMaintenanceCodeViolations[0] && (
+                    <Section>
+                        <SectionHeader>
+                            Housing Maintenance Code Violations
+                        </SectionHeader>
+                        <HousingMaintenanceCodeViolationsSection
+                            violations={
+                                housingMaintenanceCodeViolations as Property_property_housingMaintenanceCodeViolations[]
+                            }
+                        />
+                    </Section>
+                )}
+            {taxClassData && (
+                <Section>
+                    <SectionHeader>Tax Class Data</SectionHeader>
+                    <StyledTaxClassDataSection
+                        taxClassData={
+                            taxClassData as Property_property_taxClassData[]
+                        }
+                    />
+                </Section>
+            )}
         </PropertyResultWrapper>
     );
 };
@@ -59,6 +90,7 @@ const StyledAddressAndTypeSection = styled(AddressAndTypeSection)({
 });
 
 const Section = styled.div({
+    marginTop: '10px',
     marginBottom: '5px',
 });
 
@@ -68,9 +100,14 @@ const SectionHeader = styled.div({
     font: FONT.RobotoBold,
     fontSize: '25px',
     borderBottom: `1px solid ${COLORS.grey}`,
+    paddingBottom: '10px',
 });
 
 const StyledCard = styled(Card)({
     marginTop: '20px',
     marginBottom: '20px',
+});
+
+const StyledTaxClassDataSection = styled(TaxClassDataSection)({
+    marginTop: '20px',
 });

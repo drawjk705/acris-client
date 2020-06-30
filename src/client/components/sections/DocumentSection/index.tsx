@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import styled from '@emotion/styled';
 import {
     TitleAndContent,
@@ -16,9 +17,6 @@ import { PartiesSection } from '../PartiesSection';
 interface IDocumentSection {
     document: Property_property_documents | null;
 }
-
-const formatDate = (date: string) =>
-    Intl.DateTimeFormat('en-US').format(new Date(date));
 
 export const DocumentSection: React.FC<IDocumentSection> = ({ document }) => {
     const idWithLink = (
@@ -45,17 +43,23 @@ export const DocumentSection: React.FC<IDocumentSection> = ({ document }) => {
             <TitleAndContent
                 title={'Legal Date Recorded'}
                 content={document?.legalDateRecorded}
-                transformContent={formatDate}
+                transformContent={(date: string) =>
+                    moment(date).format('MM/DD/YYY')
+                }
             />
             <OptionallyRenderedTitleAndContentSection
                 title={'Good through date'}
                 content={document?.goodThroughDate}
-                transformContent={formatDate}
+                transformContent={(date: string) =>
+                    moment(date).format('MM/DD/YYY')
+                }
             />
             <OptionallyRenderedTitleAndContentSection
                 title={'Last modified'}
                 content={document?.dateModified}
-                transformContent={formatDate}
+                transformContent={(date: string) =>
+                    moment(date).format('MM/DD/YYY')
+                }
             />
             {document?.parties && document?.type && (
                 <StyledPartiesSection

@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 import { COLORS } from '../../styles/colors';
 import { makeTransition } from '../../styles/makeTransition';
 
-type IButton = {
+interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
-} & React.ButtonHTMLAttributes<HTMLButtonElement>;
+}
 
 export const Button: React.FC<IButton> = ({
     className,

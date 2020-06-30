@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import ChevronDown from '../../assets/chevron-down.svg';
 import { IClassName } from '../../constants/classNameable';
@@ -6,41 +6,35 @@ import { IClassName } from '../../constants/classNameable';
 interface ICollapsibleItem extends IClassName {
     title: string | JSX.Element;
     isAlreadyOpened?: boolean;
-    expandedHeightPx: number;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const CollapsibleItem: React.FC<ICollapsibleItem> = ({
-    title,
-    children,
-    className,
-    isAlreadyOpened = false,
-}) => {
+export const CollapsibleItem: React.FC<ICollapsibleItem> & {
+    Title: React.ReactNode;
+    Content: React.ReactNode;
+} = ({ title, children, className, isAlreadyOpened = false }) => {
     const [isOpened, setIsOpened] = useState(isAlreadyOpened);
 
+    useEffect(() => {
+        if (isAlreadyOpened !== isOpened) {
+            setIsOpened(isAlreadyOpened);
+        }
+    }, [isAlreadyOpened]);
+
     return (
-        <CollapsibleItemWrapper className={className} isOpened={isOpened}>
+        <CollapsibleItemWrapper className={className}>
             <TitleWrapper onClick={() => setIsOpened(!isOpened)}>
-                {title} <StyledChevron />
+                {title} <StyledChevron isOpened={isOpened} />
             </TitleWrapper>
-            <ContentWrapper>{children}</ContentWrapper>
+            <ContentWrapper isOpened={isOpened}>{children}</ContentWrapper>
         </CollapsibleItemWrapper>
     );
 };
 
-const CollapsibleItemWrapper = styled.div(
-    ({ isOpened }: { isOpened: boolean }) => ({
-        display: 'flex',
-        flexDirection: 'column',
-
-        [`${StyledChevron}`]: isOpened && {
-            transform: 'rotate(180deg)',
-        },
-
-        [`${ContentWrapper}`]: isOpened && {
-            display: 'flex',
-        },
-    })
-);
+const CollapsibleItemWrapper = styled.div(() => ({
+    display: 'flex',
+    flexDirection: 'column',
+}));
 
 const TitleWrapper = styled.div({
     display: 'flex',
@@ -50,14 +44,18 @@ const TitleWrapper = styled.div({
     },
 });
 
-const StyledChevron = styled(ChevronDown)({
-    marginLeft: 'auto',
-    opacity: '0.6',
-});
+const StyledChevron = styled(ChevronDown)(
+    ({ isOpened }: { isOpened: boolean }) => ({
+        marginLeft: 'auto',
+        opacity: '0.6',
+        transform: isOpened ? 'rotate(180deg)' : '',
+    })
+);
 
-const ContentWrapper = styled.div({
-    display: 'none',
-});
+const ContentWrapper = styled.div(({ isOpened }: { isOpened: boolean }) => ({
+    display: isOpened ? 'flex' : 'none',
+    flexDirection: 'column',
+}));
 
 export const CollapsibleItemComponents = {
     CollapsibleItemWrapper,
@@ -65,3 +63,6 @@ export const CollapsibleItemComponents = {
     TitleWrapper,
     ContentWrapper,
 };
+
+CollapsibleItem.Title = TitleWrapper;
+CollapsibleItem.Content = ContentWrapper;
