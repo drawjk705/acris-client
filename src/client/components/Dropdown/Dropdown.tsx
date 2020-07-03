@@ -4,9 +4,9 @@ import styled from '@emotion/styled';
 import { COLORS } from '../../styles/colors';
 import { Button } from '../Button/Button';
 import { FONT } from '../../styles/fonts';
-import ChevronDown from '../../assets/chevron-down.svg';
 import { IClassName } from '../../constants/classNameable';
 import { useField } from 'formik';
+import { ChevronDown } from '../../assets/icons/ChevronDown';
 
 interface IDropdown extends IClassName {
     initialCurrentValue: string;

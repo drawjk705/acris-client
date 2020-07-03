@@ -4,21 +4,22 @@ import styled from '@emotion/styled';
 import {
     TitleAndContent,
     OptionallyRenderedTitleAndContentSection,
-} from '../../TitleAndContent';
+} from '../../../TitleAndContent';
 import {
     Property_property_documents,
     Property_property_documents_parties,
     Property_property_documents_type,
-} from '../../../__generated__/Property';
-import { uppercaseFirstLetters } from '../../../utils/uppercaseFirstLetters';
-import { FONT } from '../../../styles/fonts';
-import { PartiesSection } from '../PartiesSection';
+} from '../../../../__generated__/Property';
+import { uppercaseFirstLetters } from '../../../../utils/uppercaseFirstLetters';
+import { FONT } from '../../../../styles/fonts';
+import { PartiesSection } from '../../PartiesSection';
+import { Section } from '../../Section';
 
-interface IDocumentSection {
+interface IDocument {
     document: Property_property_documents | null;
 }
 
-export const DocumentSection: React.FC<IDocumentSection> = ({ document }) => {
+export const Document: React.FC<IDocument> = ({ document }) => {
     const idWithLink = (
         <a
             href={`https://a836-acris.nyc.gov/DS/DocumentSearch/DocumentImageView?doc_id=${document?.id}`}
@@ -44,33 +45,33 @@ export const DocumentSection: React.FC<IDocumentSection> = ({ document }) => {
                 title={'Legal Date Recorded'}
                 content={document?.legalDateRecorded}
                 transformContent={(date: string) =>
-                    moment(date).format('MM/DD/YYY')
+                    moment(date).format('MM/DD/YYYY')
                 }
             />
             <OptionallyRenderedTitleAndContentSection
                 title={'Good through date'}
                 content={document?.goodThroughDate}
                 transformContent={(date: string) =>
-                    moment(date).format('MM/DD/YYY')
+                    moment(date).format('MM/DD/YYYY')
                 }
             />
             <OptionallyRenderedTitleAndContentSection
                 title={'Last modified'}
                 content={document?.dateModified}
                 transformContent={(date: string) =>
-                    moment(date).format('MM/DD/YYY')
+                    moment(date).format('MM/DD/YYYY')
                 }
             />
-            {document?.parties && document?.type && (
-                <StyledPartiesSection
-                    parties={
-                        document.parties as Property_property_documents_parties[]
-                    }
-                    partyTypes={
-                        document.type as Property_property_documents_type
-                    }
-                />
-            )}
+
+            <StyledSection
+                header={'Parties'}
+                props={{
+                    parties: document?.parties,
+                    partyTypes: document?.type,
+                }}
+                propTest={document?.parties && document?.type}
+                component={StyledPartiesSection}
+            />
         </DocumentSectionWrapper>
     );
 };
@@ -86,6 +87,14 @@ const DocumentSectionTitleWrapper = styled.div({
     font: FONT.RobotoBold,
     fontSize: '20px',
     marginBottom: '10px',
+});
+
+const StyledSection = styled(Section)({
+    [`${Section.Header}`]: {
+        fontSize: '18px',
+        fontStyle: 'italic',
+        paddingBottom: '0px',
+    },
 });
 
 const StyledPartiesSection = styled(PartiesSection)({

@@ -3,6 +3,8 @@ import {
     addressFragment,
     assessmentAndExemptionValuationFragment,
 } from './fragments';
+import { hiDPI } from 'polished';
+import { fireEvent } from '@testing-library/react';
 
 export const GET_PROPERTY_PREVIEW = gql`
     query PropertyPreview(
@@ -87,6 +89,30 @@ export const GET_PROPERTY = gql`
                     partyOneType
                     partyTwoType
                     partyThreeType
+                }
+            }
+            hpdJurisdictionData {
+                registrationId
+                buildingId
+                communityBoardId
+                managementProgram
+                numberOfLegalStories
+                numberOfApartments
+                numberOfRooms
+                lifecycleStage
+                recordStatusId
+                recordStatus
+                registrationContacts {
+                    type
+                    contactDescription
+                    corporationName
+                    title
+                    firstName
+                    middleInitial
+                    lastName
+                    businessAddress {
+                        ...addressFragment
+                    }
                 }
             }
             taxClassData {
@@ -182,7 +208,7 @@ export const GET_PROPERTY = gql`
                 actualLandValue
                 actualTotalValue
                 assessmentYear
-                exceptionCodeOne
+                exemptionCodeOne
                 marketValue
                 numberOfStories
                 transitionalExemptionLandTotal

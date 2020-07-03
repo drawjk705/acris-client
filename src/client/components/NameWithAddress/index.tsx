@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
-import { uppercaseFirstLetters } from '../../../../utils/uppercaseFirstLetters';
-import { TitleAndContent } from '../../../TitleAndContent';
+import { uppercaseFirstLetters } from '../../utils/uppercaseFirstLetters';
+import { TitleAndContent } from '../TitleAndContent';
 
-interface IPartySection {
+interface INameWithAddress {
     className?: string;
     name?: string | null;
     addressLineOne?: string | null;
@@ -12,7 +12,7 @@ interface IPartySection {
     state?: string | null;
     zipCode?: string | null;
 }
-export const PartySection: React.FC<IPartySection> = ({
+export const NameWithAddress: React.FC<INameWithAddress> = ({
     className,
     name,
     addressLineOne,
@@ -32,17 +32,19 @@ export const PartySection: React.FC<IPartySection> = ({
     const nameSection = useMemo(
         () =>
             name ? (
-                <Name className={className}>{uppercaseFirstLetters(name)}</Name>
+                <Name>
+                    {name ? uppercaseFirstLetters(name) : 'No name listed'}
+                </Name>
             ) : (
                 <NoContentSection>No name listed</NoContentSection>
             ),
-        [className, name]
+        [name]
     );
 
     const addressSection = useMemo(
         () =>
             hasAddressProps ? (
-                <Address className={className}>
+                <Address>
                     <AddressLine
                         addressLine={uppercaseFirstLetters(addressLineOne)}
                     />
@@ -56,9 +58,7 @@ export const PartySection: React.FC<IPartySection> = ({
                     />
                 </Address>
             ) : (
-                <NoContentSection className={className}>
-                    No address information
-                </NoContentSection>
+                <NoContentSection>No address information</NoContentSection>
             ),
         [
             className,
@@ -71,20 +71,11 @@ export const PartySection: React.FC<IPartySection> = ({
         ]
     );
 
-    const noAddressSection = useMemo(
-        () => (
-            <NoContentSection className={className}>
-                No address information
-            </NoContentSection>
-        ),
-        [className]
-    );
-
     return (
-        <PartyWrapper className={className}>
+        <NameWithAddressWrapper className={className}>
             <StyledTitleAndContent title={'Name'} content={nameSection} />
             <StyledTitleAndContent title={'Address'} content={addressSection} />
-        </PartyWrapper>
+        </NameWithAddressWrapper>
     );
 };
 
@@ -97,7 +88,7 @@ interface IAddressLine {
 const AddressLine: React.FC<IAddressLine> = ({ addressLine }) =>
     addressLine ? <AddressLineWrapper>{addressLine}</AddressLineWrapper> : null;
 
-const PartyWrapper = styled.div({
+const NameWithAddressWrapper = styled.div({
     display: 'flex',
     flexDirection: 'column',
 });
@@ -115,5 +106,9 @@ const AddressLineWrapper = styled.div({});
 const StyledTitleAndContent = styled(TitleAndContent)({
     [`${TitleAndContent.TitleSection}`]: {
         width: '60px',
+        minWidth: '60px',
+    },
+    [`${TitleAndContent.Content}`]: {
+        paddingLeft: '10px',
     },
 });

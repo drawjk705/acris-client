@@ -1,20 +1,21 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { PropertyPreview_property } from '../../__generated__/PropertyPreview';
 import { Card } from '../Card/Card';
-import ChevronRight from '../../assets/chevron-right.svg';
 import { IClassName } from '../../constants/classNameable';
 import { BoroughBlockLotSection } from '../sections/BoroughBlockLotSection';
 import { AddressAndTypeSection } from '../sections/AddressAndTypeSection';
-import { DocumentSection } from '../sections/DocumentSection';
+import { Document } from '../sections/DocumentsSection/Document';
 import {
     Property_property_documents,
     Property_property_propertyType,
 } from '../../__generated__/Property';
-import { Link } from 'react-router-dom';
+import { ChevronRight } from '../../assets/icons/ChevronRight';
 
-export const PropertyPreviewResult: React.FC<PropertyPreview_property &
-    IClassName> = ({
+interface IPropertyPreviewResult extends IClassName, PropertyPreview_property {}
+
+export const PropertyPreviewResult: React.FC<IPropertyPreviewResult> = ({
     streetNumber,
     streetName,
     propertyType,
@@ -47,7 +48,7 @@ export const PropertyPreviewResult: React.FC<PropertyPreview_property &
                         }
                     />
                 ) : (
-                    <DocumentSection
+                    <Document
                         document={documents[0] as Property_property_documents}
                     />
                 )}

@@ -11,11 +11,13 @@ import {
 } from '../AddressAndTypeSection';
 import { mockProperty } from '../../../__mocks__/mockProperty';
 import { BoroughBlockLotSection } from '../BoroughBlockLotSection';
-import { DocumentSection } from '../DocumentSection';
+import { Document } from '../DocumentsSection/Document';
 import { HousingMaintenanceCodeViolationsSection } from '../HousingMaintenanceCodeViolationsSection';
 import { mockHousingMaintenanceCodeViolations } from '../../../__mocks__/mockHousingMaintenanceCodeViolations';
 import { TaxClassDataSection } from '../TaxClassDataSection';
 import { mockTaxClassData } from '../../../__mocks__/mockTaxClassData';
+import { mockHpdJurisdictionData } from '../../../__mocks__/mockHpdJurisdictionData';
+import { HpdJurisdictionDataSection } from '../HpdJurisdictionDataSection';
 
 export default { title: 'Components/Sections' };
 
@@ -34,9 +36,7 @@ export const boroughBlockLotSection = () => (
     <BoroughBlockLotSection {...mockProperty} />
 );
 
-export const documentSection = () => (
-    <DocumentSection document={mockDocuments[0]} />
-);
+export const documentSection = () => <Document document={mockDocuments[0]} />;
 
 const partiesProps = {
     parties: mockDocuments[0].parties as Property_property_documents_parties[],
@@ -57,4 +57,8 @@ export const housingMaintenanceCodeViolations = () => (
 
 export const taxClassDataSection = () => (
     <TaxClassDataSection taxClassData={mockTaxClassData} />
+);
+
+export const hpdJurisdictionDataSection = () => (
+    <HpdJurisdictionDataSection {...mockHpdJurisdictionData} />
 );

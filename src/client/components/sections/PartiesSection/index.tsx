@@ -4,7 +4,7 @@ import { Property_property_documents_parties } from '../../../__generated__/Prop
 import { groupBy } from '../../../utils/groupBy';
 import { uppercaseFirstLetters } from '../../../utils/uppercaseFirstLetters';
 import { CollapsibleItem } from '../../CollapsibleItem/CollapsibleItem';
-import { PartySection } from './PartySection';
+import { NameWithAddress } from '../../NameWithAddress';
 import { FONT } from '../../../styles/fonts';
 import { IClassName } from '../../../constants/classNameable';
 import { COLORS } from '../../../styles/colors';
@@ -43,22 +43,17 @@ export const PartiesSection: React.FC<IPartiesSection> = ({
 
     return (
         <PartiesSectionWrapper className={className}>
-            <PartiesSectionTitleWrapper>Parties</PartiesSectionTitleWrapper>
             {partiesByTypes.map((parties, partyTypeIndex) => {
-                const PartyType: React.FC = () => (
-                    <PartyTypeWrapper>
-                        {uppercaseFirstLetters(partyTypes[partyTypeIndex])}
-                    </PartyTypeWrapper>
-                );
-
                 return (
                     <StyledCollapsibleItem
                         key={partyTypeIndex}
-                        title={<PartyType />}
+                        title={uppercaseFirstLetters(
+                            partyTypes[partyTypeIndex]
+                        )}
                     >
                         <PartiesByTypeSection>
                             {parties.map((party, partyIndex) => (
-                                <StyledPartySection
+                                <StyledNameWithAddress
                                     name={party.name}
                                     {...party.address}
                                     key={partyIndex}
@@ -86,13 +81,10 @@ const PartiesSectionTitleWrapper = styled.div({
     marginBottom: '12px',
 });
 
-const PartyTypeWrapper = styled.div({
-    fontSize: '18px',
-    fontWeight: 'bolder',
-    marginBottom: '5px',
-});
-
 const StyledCollapsibleItem = styled(CollapsibleItem)({
+    [`${CollapsibleItem.Title}`]: {
+        font: FONT.RobotoBold,
+    },
     marginBottom: '10px',
 });
 
@@ -105,6 +97,6 @@ const PartiesByTypeSection = styled.div({
     },
 });
 
-const StyledPartySection = styled(PartySection)({
+const StyledNameWithAddress = styled(NameWithAddress)({
     paddingLeft: '10px',
 });

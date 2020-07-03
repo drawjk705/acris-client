@@ -7,6 +7,7 @@ import {
 import { GET_PROPERTY } from '../../../client/queries/getProperty';
 import { useQuery } from '@apollo/react-hooks';
 import { PropertyResult } from '../../../client/components/PropertyResult';
+import styled from '@emotion/styled';
 
 const isValidDocumentId = ({ documentId }: PropertyVariables) => !!documentId;
 
@@ -27,13 +28,18 @@ const transformProps = ({
     borough,
     block,
     lot,
-    ...props
-}: PropertyVariables) => ({
-    ...props,
+    streetNumber,
+    streetName,
+    documentId,
+}: PropertyVariables): PropertyVariables => ({
+    streetNumber: streetNumber?.toUpperCase(),
+    streetName: streetName?.toUpperCase(),
+    documentId: documentId?.toUpperCase(),
     borough: borough,
     block: Number(block),
     lot: Number(lot),
 });
+
 export const PropertyResultPage: React.FC<PropertyVariables> = (props) => {
     const { data, loading, error } = useQuery<Property, PropertyVariables>(
         GET_PROPERTY,
@@ -55,8 +61,17 @@ export const PropertyResultPage: React.FC<PropertyVariables> = (props) => {
         const property: Property_property = data
             .property[0] as Property_property;
 
-        return <PropertyResult {...property} />;
+        return (
+            <PropertyResultWrapper>
+                <PropertyResult {...property} />
+            </PropertyResultWrapper>
+        );
     }
 
     return <div>nothing</div>;
 };
+
+const PropertyResultWrapper = styled.div({
+    margin: '100px',
+    marginTop: '20px',
+});

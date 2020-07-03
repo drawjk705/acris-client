@@ -15,6 +15,12 @@ export enum Borough {
   STATEN_ISLAND = "STATEN_ISLAND",
 }
 
+export enum HpdJurisdictionRecordStatus {
+  Active = "Active",
+  Inactive = "Inactive",
+  Pending = "Pending",
+}
+
 export enum ViolationCurrentStatus {
   CERTIFICATION_POSTPONMENT_DENIED = "CERTIFICATION_POSTPONMENT_DENIED",
   CERTIFICATION_POSTPONMENT_GRANTED = "CERTIFICATION_POSTPONMENT_GRANTED",

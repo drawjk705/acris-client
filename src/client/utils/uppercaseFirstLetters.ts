@@ -1,6 +1,8 @@
 const defaultLowercaseStopWords = ['a', 'the', 'of', 'or', 'and'];
 const defaultUppercaseStopWords = ['LLC'];
 
+const keepUppercaseRegexes = [/[a-zA-Z0-9]+&[a-zA-Z0-9]/];
+
 /**
  * converts first letter of each word to uppercase
  * @param str
@@ -28,7 +30,8 @@ export const uppercaseFirstLetters = (
         ? str
               .split(delimiter)
               .map((split) =>
-                  allUppercaseStopWords.includes(split)
+                  allUppercaseStopWords.includes(split) ||
+                  keepUppercaseRegexes.some((regex) => regex.test(split))
                       ? split
                       : split.toLowerCase()
               )

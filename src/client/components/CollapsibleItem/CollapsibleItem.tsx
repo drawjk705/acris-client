@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import ChevronDown from '../../assets/chevron-down.svg';
 import { IClassName } from '../../constants/classNameable';
+import { ChevronDown } from '../../assets/icons/ChevronDown';
 
 interface ICollapsibleItem extends IClassName {
     title: string | JSX.Element;
@@ -49,6 +49,7 @@ const StyledChevron = styled(ChevronDown)(
         marginLeft: 'auto',
         opacity: '0.6',
         transform: isOpened ? 'rotate(180deg)' : '',
+        paddingTop: isOpened ? '0px' : '2px',
     })
 );
 

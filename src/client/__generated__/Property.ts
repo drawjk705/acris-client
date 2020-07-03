@@ -3,7 +3,7 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { Borough, ViolationCurrentStatus, ViolationStatus } from "./globalTypes";
+import { Borough, HpdJurisdictionRecordStatus, ViolationCurrentStatus, ViolationStatus } from "./globalTypes";
 
 // ====================================================
 // GraphQL query operation: Property
@@ -49,6 +49,39 @@ export interface Property_property_documents {
   id: string;
   parties: Property_property_documents_parties[] | null;
   type: Property_property_documents_type;
+}
+
+export interface Property_property_hpdJurisdictionData_registrationContacts_businessAddress {
+  addressLineOne: string | null;
+  addressLineTwo: string | null;
+  city: string | null;
+  state: string | null;
+  zipCode: string | null;
+}
+
+export interface Property_property_hpdJurisdictionData_registrationContacts {
+  type: string | null;
+  contactDescription: string | null;
+  corporationName: string | null;
+  title: string | null;
+  firstName: string | null;
+  middleInitial: string | null;
+  lastName: string | null;
+  businessAddress: Property_property_hpdJurisdictionData_registrationContacts_businessAddress | null;
+}
+
+export interface Property_property_hpdJurisdictionData {
+  registrationId: number | null;
+  buildingId: number | null;
+  communityBoardId: number | null;
+  managementProgram: string | null;
+  numberOfLegalStories: number | null;
+  numberOfApartments: number | null;
+  numberOfRooms: number | null;
+  lifecycleStage: string | null;
+  recordStatusId: number | null;
+  recordStatus: HpdJurisdictionRecordStatus | null;
+  registrationContacts: (Property_property_hpdJurisdictionData_registrationContacts | null)[];
 }
 
 export interface Property_property_taxClassData_assessmentAndExemptionValuations_actual_assessment {
@@ -396,7 +429,7 @@ export interface Property_property_valuationAndAssessmentData {
   actualLandValue: number | null;
   actualTotalValue: number | null;
   assessmentYear: string | null;
-  exceptionCodeOne: number | null;
+  exemptionCodeOne: number | null;
   marketValue: number | null;
   numberOfStories: number | null;
   transitionalExemptionLandTotal: number | null;
@@ -431,6 +464,7 @@ export interface Property_property {
   unit: string | null;
   propertyType: Property_property_propertyType | null;
   documents: (Property_property_documents | null)[];
+  hpdJurisdictionData: Property_property_hpdJurisdictionData | null;
   taxClassData: (Property_property_taxClassData | null)[];
   valuationAndAssessmentData: (Property_property_valuationAndAssessmentData | null)[];
   housingMaintenanceCodeViolations: (Property_property_housingMaintenanceCodeViolations | null)[];

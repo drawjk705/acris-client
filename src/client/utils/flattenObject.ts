@@ -6,15 +6,12 @@ type flattenObjectProps = {
 };
 
 interface IFlattenObject {
-    ({
-        object,
-        accumulatedKey,
-        currentDepth,
-        depth,
-    }: flattenObjectProps): Object;
+    ({ object, accumulatedKey, currentDepth, depth }: flattenObjectProps): {
+        [key: string]: any;
+    };
 }
 
-export const flattenObject: IFlattenObject = ({
+const _flattenObject: IFlattenObject = ({
     object,
     accumulatedKey = '',
     currentDepth = -1,
@@ -32,7 +29,7 @@ export const flattenObject: IFlattenObject = ({
 
     return Object.entries(object).reduce(
         (acc, [key, value]) => ({
-            ...flattenObject({
+            ..._flattenObject({
                 object: value,
                 accumulatedKey: `${accumulatedKey}_${key}`,
                 currentDepth: currentDepth + 1,
@@ -43,3 +40,9 @@ export const flattenObject: IFlattenObject = ({
         {}
     );
 };
+
+export const flattenObject = ({
+    object,
+    depth,
+}: Pick<flattenObjectProps, 'object' | 'depth'>) =>
+    _flattenObject({ object, depth });

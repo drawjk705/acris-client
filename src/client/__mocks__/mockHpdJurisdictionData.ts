@@ -1,0 +1,65 @@
+import { Property_property_hpdJurisdictionData } from '../__generated__/Property';
+import { HpdJurisdictionRecordStatus } from '../__generated__/globalTypes';
+
+export const mockHpdJurisdictionData: Property_property_hpdJurisdictionData = {
+    registrationId: 102033,
+    buildingId: 5968,
+    communityBoardId: 7,
+    managementProgram: 'PVT',
+    numberOfLegalStories: 7,
+    numberOfApartments: 33,
+    numberOfRooms: 0,
+    lifecycleStage: 'Building',
+    recordStatusId: 1,
+    recordStatus: HpdJurisdictionRecordStatus.Active,
+    registrationContacts: [
+        {
+            type: 'CorporateOwner',
+            contactDescription: 'GEN.PART',
+            corporationName: '200 WEST 85 STREET LLC',
+            title: null,
+            firstName: null,
+            middleInitial: null,
+            lastName: null,
+            businessAddress: {
+                addressLineOne: '163 WEST 74 STREET',
+                addressLineTwo: '',
+                city: 'NEW YORK',
+                state: 'NY',
+                zipCode: '10023',
+            },
+        },
+        {
+            type: 'Agent',
+            contactDescription: 'GEN.PART',
+            corporationName: null,
+            title: null,
+            firstName: 'ZACARIAS',
+            middleInitial: null,
+            lastName: 'VAZQUEZ',
+            businessAddress: {
+                addressLineOne: '163 WEST 74 STREET',
+                addressLineTwo: '',
+                city: 'NEW YORK',
+                state: 'NY',
+                zipCode: '10023',
+            },
+        },
+        {
+            type: 'HeadOfficer',
+            contactDescription: 'GEN.PART',
+            corporationName: null,
+            title: 'GENERAL PARTNER',
+            firstName: 'JOHN',
+            middleInitial: 'D',
+            lastName: 'BRUSCO',
+            businessAddress: {
+                addressLineOne: '163 WEST 74 STREET',
+                addressLineTwo: '',
+                city: 'NEW YORK',
+                state: 'NY',
+                zipCode: '10023',
+            },
+        },
+    ],
+};

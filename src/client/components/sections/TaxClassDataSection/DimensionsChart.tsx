@@ -96,12 +96,13 @@ export const DimensionsChart: React.FC<Property_property_taxClassData_dimensions
 const StyledOptionallyRenderedTitleAndContentSection = styled(
     OptionallyRenderedTitleAndContentSection
 )({
+    minWidth: '195px',
+
     [`${TitleAndContent.TitleSection}`]: {
         width: '180px',
     },
     [`${TitleAndContent.Content}`]: {
         marginLeft: '20px',
-        // marginRight: '20px',
         width: '100px',
         textAlign: 'right',
     },

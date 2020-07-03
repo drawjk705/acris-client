@@ -4,6 +4,7 @@ import { mockTaxClassData } from './mockTaxClassData';
 import { mockValuationAndAssessmentData } from './mockValuationAndAssessmentData';
 import { Borough } from '../__generated__/globalTypes';
 import { Property_property } from '../__generated__/Property';
+import { mockHpdJurisdictionData } from './mockHpdJurisdictionData';
 
 export const mockProperty: Property_property = {
     bble: '1012320036',
@@ -11,6 +12,7 @@ export const mockProperty: Property_property = {
     lot: 36,
     borough: Borough.MANHATTAN,
     documents: mockDocuments,
+    hpdJurisdictionData: mockHpdJurisdictionData,
     housingMaintenanceCodeViolations: mockHousingMaintenanceCodeViolations,
     propertyType: {
         description: 'APARTMENT BUILDING',
