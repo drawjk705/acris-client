@@ -6,8 +6,6 @@ import {
 } from '../../../__generated__/Property';
 import { OptionallyRenderedTitleAndContentSection } from '../../TitleAndContent';
 import { RegistrationContact } from './RegistrationContact';
-import { CollapsibleItem } from '../../CollapsibleItem/CollapsibleItem';
-import { FONT } from '../../../styles/fonts';
 import { Section } from '../Section';
 
 interface IHpdJurisdictionDataSection

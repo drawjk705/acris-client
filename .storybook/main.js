@@ -4,6 +4,7 @@ module.exports = {
         '@storybook/addon-actions',
         '@storybook/addon-links',
         '@storybook/preset-typescript',
+        '@storybook/addon-viewport/register',
     ],
     webpackFinal: async (config) => {
         // do mutation to the config

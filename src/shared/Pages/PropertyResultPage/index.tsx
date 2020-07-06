@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import {
     PropertyVariables,
     Property_property,
@@ -7,7 +8,6 @@ import {
 import { GET_PROPERTY } from '../../../client/queries/getProperty';
 import { useQuery } from '@apollo/react-hooks';
 import { PropertyResult } from '../../../client/components/PropertyResult';
-import styled from '@emotion/styled';
 
 const isValidDocumentId = ({ documentId }: PropertyVariables) => !!documentId;
 

@@ -5,11 +5,7 @@ import {
     TitleAndContent,
     OptionallyRenderedTitleAndContentSection,
 } from '../../../TitleAndContent';
-import {
-    Property_property_documents,
-    Property_property_documents_parties,
-    Property_property_documents_type,
-} from '../../../../__generated__/Property';
+import { Property_property_documents } from '../../../../__generated__/Property';
 import { uppercaseFirstLetters } from '../../../../utils/uppercaseFirstLetters';
 import { FONT } from '../../../../styles/fonts';
 import { PartiesSection } from '../../PartiesSection';
@@ -71,6 +67,7 @@ export const Document: React.FC<IDocument> = ({ document }) => {
                 }}
                 propTest={document?.parties && document?.type}
                 component={StyledPartiesSection}
+                withRef={false}
             />
         </DocumentSectionWrapper>
     );
